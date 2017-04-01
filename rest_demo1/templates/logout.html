@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title</title>
+
+</head>
+<body>
+    <h2>You will be redirected in <span id="count"></span> seconds</h2>
+<script type="text/javascript">
+    window.onload=function() {
+    function countdown() {
+    if ( typeof countdown.counter == 'undefined' ) {
+        countdown.counter = 5; // initial count
+        }
+    if(countdown.counter > 0) {
+        document.getElementById('count').innerHTML = countdown.counter--;
+        setTimeout(countdown, 1000);
+        }
+    else {
+        location.href = 'https://google.com/';
+        }
+    }
+    countdown();
+    };
+</script>
+</body>
+</html>

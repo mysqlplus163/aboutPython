@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="try">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Try Angular 1.5</title>
+    <script src="js/angular.min.js"></script>
+    <script src="js/app/app.module.js"></script>
+    <script src="js/app/app.config.js"></script>
+
+    <script src="js/app/blog-list/blog-list.module.js"></script>
+    <script src="js/app/blog-list/blog-list.component.js"></script>
+    <style>
+        .new-class {
+            font-size: 72px;
+        }
+        .other-class {
+            font-size: 30px;
+        }
+        .new-class2 {
+            font-size: 120px;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="new-class" ng-class="{'other-class': name=='justin', 'new-class2': font==120 }">Hello,
+        <span ng-if="name">{{ name }}</span>
+        <span ng-if="!name">World</span>
+        !
+    </h1>
+    <input type="text" ng-model="name" />
+    <input type="text" ng-model="font" placeholder="font"/>
+    <!--<div class="" ng-controller="BlogListController">-->
+        <!--<h1 class="new-class">{{ title }} </h1>-->
+        <!--<button ng-click="someClickTest()">Click me!</button>-->
+    <!--</div>-->
+    <blog-list></blog-list>
+
+</body>
+</html>
