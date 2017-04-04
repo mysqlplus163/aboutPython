@@ -31,3 +31,5 @@ log_file_path = "%s%s%s%s%s" % (BASE_DIR, os.path.sep, "log", os.path.sep, "log_
 # log_file_path = "{}{}{}{}{}".format(BASE_DIR, os.path.sep, "log", os.path.sep, "log_file")
 print(log_file_path)
 
+log_file_path2 = os.path.join(BASE_DIR, "log", "log_file")
+print(log_file_path2)
