@@ -5,5 +5,5 @@
 
 test = [('ww', 88), ('rr', 99)]
 
-a = sum(x[1] for x in iter(test))
+a = sum(x[1] for x in test)
 print(a)
