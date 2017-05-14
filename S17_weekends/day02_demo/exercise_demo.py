@@ -17,16 +17,18 @@
 # y <= 33
 # z%3 = 0
 #
-# for x in range(1, 20):
-#     for y in range(1, 34):
-#         z = 100 - x - y
-#         if z % 3 == 0 and 5 * x + 3 * y + z / 3 == 100:
-#             print("应该买{}只公鸡，{}只母鸡，{}只小鸡。".format(x, y, z))
+for x in range(1, 20):
+    for y in range(1, 33):
+        z = 100 - x - y
+        if z % 3 == 0 and 5 * x + 3 * y + z / 3 == 100:
+            print("应该买{}只公鸡，{}只母鸡，{}只小鸡。".format(x, y, z))
 
+# 打印表格，用到prettytable模块
+# 先pip install prettytable
 from prettytable import PrettyTable
 
-pt = PrettyTable(["username", "password", "times", "out"])
+pt = PrettyTable(["username", "password", "times", "balance"])
 pt.align["用户名"] = "l"
 pt.padding_width = 1
-pt.add_row(["Alex", "1", "3", "1"])
+pt.add_row(["Alex", "123", "3", "1000"])
 print(pt)
