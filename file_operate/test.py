@@ -27,11 +27,18 @@
 # print(data2)
 
 
-root_menu = {
-    "menu": "file,insert,design"
-}
+# root_menu = {
+#     "menu": "file,insert,design"
+# }
+#
+# with open("test.txt", "w+") as f:
+#     f.write("".join(list(root_menu.keys())) + ":")
 
-with open("test.txt", "w+") as f:
-    f.write("".join(list(root_menu.keys())) + ":")
+import time
+import random
 
-
+while True:
+    with open("temp2.txt", "a") as f:
+        s = 10 * "{}".format(random.randrange(1, 10))
+        f.write(s + "\n")
+        time.sleep(1)
