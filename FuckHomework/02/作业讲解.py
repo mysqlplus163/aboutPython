@@ -1,4 +1,4 @@
-#使用while循环输出1 2 3 4 5 6     8 9 10
+# 使用while循环输出1 2 3 4 5 6     8 9 10
 # count=1
 # while count < 11:
 #     if count == 7:

@@ -39,12 +39,27 @@ while True:
     for i in dic:
         print(i)
     choice1 = input("一级菜单：").strip()
-    for j in dic.get(choice1):
-        print(j)
+
+    if choice1.upper() == "Q":
+        exit("再见")
+    elif choice1 in dic:
+        for j in dic.get(choice1):
+            print(j)
+    else:
+        continue
+
     while True:
         choice2 = input("二级菜单：").strip()
-        for t in dic.get(choice1).get(choice2):
-            print(t)
+
+        if choice2.upper() == "B":
+            break
+        elif choice2.upper() == "Q":
+            exit("再见")
+        elif choice2 in dic.get(choice1):
+            for t in dic.get(choice1).get(choice2):
+                print(t)
+        else:
+            continue
         while True:
             choice3 = input("三级菜单：").strip()
             if choice3.upper() == "B":
