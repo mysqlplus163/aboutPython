@@ -15,7 +15,7 @@ def index():
     print("欢迎访问首页。")
 
     stop_time = time.time()
-    print("花费了{}秒。".format(stop_time - start_time))
+    print("耗时{}秒。".format(stop_time - start_time))
 
 
 index()

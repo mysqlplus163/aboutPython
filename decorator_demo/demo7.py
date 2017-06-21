@@ -12,7 +12,7 @@ def timer(func):
         start_time = time.time()
         func()
         stop_time = time.time()
-        print("花费了{}秒。".format(stop_time - start_time))
+        print("耗时{}秒。".format(stop_time - start_time))
     return wrapper
 
 
