@@ -11,7 +11,7 @@ import time
 import logging
 from log_demo import my_logging  # 导入自定义的logging配置
 
-logger = logging.getLogger(__file__)  # 生成logger实例
+logger = logging.getLogger(__name__)  # 生成logger实例
 
 
 def demo():

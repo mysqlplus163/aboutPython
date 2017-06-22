@@ -34,3 +34,4 @@ def home():
 index()
 home()
 
+a = lambda x: x+1
