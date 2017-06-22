@@ -9,7 +9,7 @@ MyLogging Test
 
 import time
 import logging
-from log_demo import my_logging  # 导入自定义的logging配置
+from log_demo import my_logging # 导入自定义的logging配置
 
 logger = logging.getLogger(__name__)  # 生成logger实例
 
@@ -25,4 +25,5 @@ def demo():
     logger.info("中文测试结束。。。")
 
 if __name__ == "__main__":
+    my_logging.load_my_logging_cfg()  # 在你程序文件的入口加载自定义logging配置
     demo()

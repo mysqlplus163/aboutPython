@@ -68,6 +68,12 @@ LOGGING_DIC = {
         },
     },
 }
-logging.config.dictConfig(LOGGING_DIC)  # 导入上面定义的配置
-logger = logging.getLogger(__name__)  # 生成一个log实例
-logger.info('It works!')  # 记录该文件的运行状态
+
+
+def load_my_logging_cfg():
+    logging.config.dictConfig(LOGGING_DIC)  # 导入上面定义的logging配置
+    logger = logging.getLogger(__name__)  # 生成一个log实例
+    logger.info('It works!')  # 记录该文件的运行状态
+
+if __name__ == '__main__':
+    load_my_logging_cfg()
