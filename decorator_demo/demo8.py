@@ -19,3 +19,41 @@ print(func)
 print(func.__closure__)
 print(func.__closure__[0].cell_contents)
 
+
+
+def foo(name):
+    # name = "Alex"
+
+    def b():
+        print(name)
+
+    return b
+
+foo("Alex")
+
+
+
+# print(foo)
+# print(foo())
+bar = foo()  # func -> b()
+bar()  # b()
+
+
+def f():
+    print("f...")
+
+b = f
+b()
+
+
+
+
+
+
+
+# def foo():
+#     name = "Alex"
+#     return name
+#
+#
+# foo()

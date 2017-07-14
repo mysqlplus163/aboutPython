@@ -1,0 +1,29 @@
+version:
+  1
+disable_existing_loggers:
+  False
+formatters:
+  standard:
+    format: '[%(asctime) -s][%(threadName)s:%(thread)d][task_id:%(name)s][%(filename)s:%(lineno)d]' \
+                  '[%(levelname)s][%(message)s]'
+    datefmt: '%Y-%m-%d %H:%M:%S'
+  simple:
+    format: '[%(levelname)s][%(asctime)s][%(filename)s:%(lineno)d]%(message)s'
+handlers:
+  console:
+    level: DEBUG
+    class: logging.StreamHandler
+    format: simple
+  default:
+    level: DEBUG
+    class: logging.handlers.RotatingFileHandler
+    filename: all3.log
+    maxBytes: 1024*1024*5
+    backupCount: 5
+    formatter: standard
+    encoding: utf-8
+loggers:
+  '':
+    handlers: [default, console]
+    level: DEBUG
+    propagate: True

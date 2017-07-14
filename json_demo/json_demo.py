@@ -47,11 +47,11 @@ dump：将一个对象序列化存入文件
 dump()的第一个参数是要序列化的对象，第二个参数是打开的文件句柄
 注意打开文件时加上以UTF-8编码打开
 
-* 运行此文件之后在统计目录下会有一个data.json文件，打开之后就可以看到json类型的文件应该是怎样定义的
+* 运行此文件之后在同级目录下会有一个data.json文件，打开之后就可以看到保存到文件中的json数据是什么格式
 
 """
 with open("data.json", "w", encoding="UTF-8") as f_dump:
-    s_dump = json.dump(data_obj, f_dump, ensure_ascii=False)
+    s_dump = json.dump(data_obj, f_dump, ensure_ascii=False, indent=4)
 print(s_dump)
 
 # ---------------------------------------------------分割线------------------------------------------------------------
@@ -78,6 +78,6 @@ print(r_loads)
 
 arg = '{"bakend": "www.oldboy.org", "record": {"server": "100.1.7.9", "weight": 20, "maxconn": 30}}'
 
-a = json.loads(input('请输入添加的数据：'),encoding='utf-8')
+a = json.loads(input('请输入添加的数据：'), encoding='utf-8')  # input输入上面的字符串（去掉单引号）
 print(a)
 

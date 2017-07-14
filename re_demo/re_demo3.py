@@ -6,4 +6,9 @@
 
 import re
 
-s = ""
+s = "李杰， 李刚，李三，王超，占山"
+print(re.findall(r'李.+\s', s))
+
+print(re.split(r'[a]', "abcd",2))
+
+print("abcd".split("a"))
