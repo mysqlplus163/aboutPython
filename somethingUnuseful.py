@@ -8,14 +8,24 @@
 """
 
 
-def whatyouneed():
-    while True:
-        yield "Python"
+# def whatyouneed():
+#     while True:
+#         yield "Python"
+#
+# i = 1
+#
+# for x in whatyouneed():
+#     print(x)
+#     i += 1
+#     if i > 10:
+#         break
 
-i = 1
+def how_many(the_list):
+    return "There {0} {1[0]} {1[1]}.".format((("is", "are")[the_list[0]>1]), the_list)
 
-for x in whatyouneed():
-    print(x)
-    i += 1
-    if i > 10:
-        break
+if __name__ == '__main__':
+    ret = how_many([1, "king"])
+    print(ret)
+    ret = how_many([5, "trinket"])
+    print(ret)
+

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AJAX异步</title>
+</head>
+<body>
+    <a id="test">点我</a>
+
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    function getRawData(theURL){
+      $.ajax({
+          url: theURL,
+          type: "GET",
+          dataType: "JSONP",
+          success:function (result) {
+//              console.log(result);
+              console.log(result['VAP4BFR16'].length);
+              for (var i=0;i<result['VAP4BFR16'].length;i++){
+                  console.log(result['VAP4BFR16'][i]);
+              }
+          }
+      })
+    }
+
+
+    $(function () {
+        $("#test").click(function () {
+            getRawData("http://c.3g.163.com/nc/video/list/VAP4BFR16/y/0-10.html");
+        })
+    });
+
+</script>
+<script>
+function deleteorder(orderid) {
+    swal({
+            title: "Are you sure?",
+            text: "Are you sure that you want to cancel this order?",
+            type: "warning",
+            showCancelButton: true,
+            closeOnConfirm: false,
+            confirmButtonText: "Yes, cancel it!",
+            confirmButtonColor: "#ec6c62"
+        }, function() {
+            $.ajax({
+                type: "get",
+                url: "/admin/delete_order.php",
+                data: "orderid="+orderid,
+                success: function(data){
+                }
+            })
+            .done(function(data) { // 成功取消时的提示
+                swal("Canceled!", "Your order was successfully canceled!", "success");
+                $('#orders-history').load(document.URL + ' #orders-history');
+            })
+            .error(function(data) { // 取消失败时的提示
+                swal("Oops", "We couldn't connect to the server!", "error");
+            });
+    });
+}
+</script>
+</body>
