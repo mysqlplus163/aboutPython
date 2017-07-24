@@ -35,4 +35,7 @@
 
 2. 配合Django AJAX 使用示例
 
-![]()
+![图1](https://github.com/Q1mi/aboutPython/blob/master/20170722/KSH/demoPng/1.png)
+![图2](https://github.com/Q1mi/aboutPython/blob/master/20170722/KSH/demoPng/2.png)
+![图3](https://github.com/Q1mi/aboutPython/blob/master/20170722/KSH/demoPng/3.png)
+![图4](https://github.com/Q1mi/aboutPython/blob/master/20170722/KSH/demoPng/4.png)
