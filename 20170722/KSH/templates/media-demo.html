@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>media查询示例</title>
+    <style>
+        .c1 {
+            background-color: red;
+        }
+        /* c2能生效的最小屏幕宽度是768px */
+        @media (min-width: 768px) {
+            .c2 {
+                background-color: green;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="c1 c2">media查询示例</div>
+</body>
+</html>

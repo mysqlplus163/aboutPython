@@ -5,6 +5,6 @@ from django.contrib import admin
 from app01 import models
 
 
-@admin.register(models.Info)
-class InfoAdmin(admin.ModelAdmin):
+@admin.register(models.Product)
+class ProductAdmin(admin.ModelAdmin):
     pass

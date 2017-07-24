@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Python全栈四期分享</title>
+    <link rel="stylesheet" type="text/css" href="/static/plugins/bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/plugins/sweetalert/sweetalert.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/plugins/datetimepicker/css/bootstrap-datetimepicker.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/css/my-custom.css"/>
+</head>
+<body>
+<!--nav start -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">前端分享课</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>
+<!--nav end -->
+
+<!-- container start -->
+<div class="container start-container">
+    <!-- first row start -->
+    <div class="row">
+        <h1 class="page-header">控制台
+            <button class="btn btn-success pull-right" data-toggle="modal" data-target="#myModal">添加产品</button>
+        </h1>
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">产品展示表</div>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table id="t1" class="table">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>产品名称</th>
+                            <th>上线时间</th>
+                            <th>状态</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% if contents %}
+                            {% for content in contents %}
+                                <tr id="p-{{ content.id }}" p-id="{{ content.id }}">
+                                    <td>{{ content.id }}</td>
+                                    <td>{{ content.name }}</td>
+                                    <td>{{ content.date }}</td>
+                                    <td>{{ content.get_status_display }}</td>
+                                    <td><a>删除</a></td>
+                                </tr>
+                            {% endfor %}
+                        {% endif %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- first row end -->
+    <!-- modal start -->
+    <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="gridSystemModalLabel">新增产品</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <!-- sub info start -->
+                        <form id="f1" class="form-horizontal">
+                            <div class="form-group">
+                                <label for="inputName" class="col-sm-2 control-label">名称</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="inputName" placeholder="产品名称">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputStatus" class="col-sm-2 control-label">状态</label>
+                                <div class="col-sm-10">
+                                    <select id="inputStatus" class="form-control">
+                                        <option value="0">计划中</option>
+                                        <option value="1">已上线</option>
+                                        <option value="-1">下线了</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputDate" class="col-sm-2 control-label">时间</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="inputDate" data-date-format="yyyy-mm-dd hh:ii" placeholder="创建时间"/>
+                                </div>
+
+                            </div>
+                        </form>
+                        <!-- sub info end -->
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary" id="addButton">提交</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    <!-- modal end -->
+</div>
+<!-- container end -->
+{% csrf_token %}
+<script src="/static/js/jquery-3.2.1.min.js"></script>
+<script src="/static/plugins/bootstrap/js/bootstrap.js"></script>
+<script src="/static/plugins/sweetalert/sweetalert.min.js"></script>
+<script src="/static/plugins/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+<script src="/static/plugins/datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+<script src="/static/js/my-action.js"></script>
+</body>
+</html>
