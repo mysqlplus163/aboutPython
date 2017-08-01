@@ -22,7 +22,7 @@ id_simple_format = '[%(levelname)s][%(asctime)s] %(message)s'
 
 logfile_dir = os.path.dirname(os.path.abspath(__file__))  # log文件的目录
 
-logfile_name = 'all2.log'  # log文件名
+logfile_name = 'all3.log'  # log文件名
 
 # 如果不存在定义的日志目录就创建一个
 if not os.path.isdir(logfile_dir):
@@ -54,7 +54,7 @@ LOGGING_DIC = {
             'level': 'DEBUG',
             'class': 'logging.handlers.RotatingFileHandler',  # 保存到文件
             'filename': logfile_path,  # 日志文件
-            'maxBytes': 1024*1024*5,  # 日志大小 5M
+            'maxBytes': 1024*1024*0.05,  # 日志大小 5M
             'backupCount': 5,
             'formatter': 'standard',
             'encoding': 'utf-8',  # 日志文件的编码，再也不用担心中文log乱码了

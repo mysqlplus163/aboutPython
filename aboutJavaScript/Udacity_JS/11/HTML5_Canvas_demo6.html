@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>创建表情包 | HTML5 Canvas demo</title>
+    <style>
+        #image-container {
+            display: flex;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <input type="file" id="file"/>
+</div>
+
+<div id="image-container">
+
+    <!--在网页中分配一块地方当作画布-->
+    <canvas width="500" height="500"></canvas>
+
+    <div>
+        <span>Top Line:</span><br/>
+        <input id="topLineText" type="text"/><br/>
+        <span>Bottom Line:</span>
+        <input id="bottomLineText" type="text"/><br/>
+        <button id="saveBtn">Save</button><br/>
+
+    </div>
+</div>
+
+<script>
+    function textChangeListener(evt) {
+        var id = evt.target.id;
+        var text = evt.target.value;
+
+        if (id == "topLineText") {
+            window.topLineText = text;
+        } else {
+            window.bottomlineText = text;
+        }
+        redrawMeme(window.imageSrc, window.topLineText, window.bottomlineText);
+
+    }
+
+    function redrawMeme(image, topLine, bottomLine) {
+        // 获取canvas
+        var canvas = document.querySelector("canvas");
+        var ctx = canvas.getContext("2d");
+        // ...代码写在这里
+
+        if (image != null) {
+            ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+
+        }
+        ctx.font = "30pt Impact";  //设置字体
+        ctx.textAlign = "center";  //字体居中
+
+        ctx.fillStyle = "white";  //白色填充
+        if (topLine != null) {
+            ctx.fillText(topLine, c.width / 2, 40);
+
+            ctx.strokeStyle = "black";  //黑色边框
+            ctx.lineWidth = 3;  //边框宽3
+            ctx.strokeText(topLine, c.width / 2, 40);
+        }
+
+        if (bottomLine != null) {
+            ctx.fillText(bottomLine, c.width / 2, canvas.height - 20);
+
+            ctx.strokeStyle = "black";  //黑色边框
+            ctx.lineWidth = 3;  //边框宽3
+            ctx.strokeText(bottomLine, c.width / 2, canvas.height - 20);
+        }
+    }
+
+
+    function saveFile() {
+        window.open(document.querySelector("canvas").toDataURL());
+    }
+
+
+    function handleFileSelect(evt) {
+        var canvasWidth = 500;
+        var canvasHeight = 500;
+        var file = evt.target.files[0];
+
+        var reader = new FileReader();
+        reader.onload = function (fileObject) {
+            var data = fileObject.target.result;
+
+            // 创建一个image对象
+            var image = new Image();
+            image.onload = function () {
+                window.imageSrc = this;
+                redrawMeme(window.imageSrc, null, null)
+            };
+
+            // 把图片设置成背景
+            image.src = data;
+            console.log(fileObject.target.result);
+        };
+        reader.readAsDataURL(file);
+    }
+
+    window.topLineText = "";
+    window.bottomlineText = "";
+
+    var input1 = document.getElementById("topLineText");
+    var input2 = document.getElementById("bottomLineText");
+
+    input1.oninput = textChangeListener;
+    input2.oninput = textChangeListener;
+
+    document.getElementById("file").addEventListener("change", handleFileSelect, false);
+    document.querySelector("button").addEventListener("click", saveFile, false);
+
+
+    //    var c = document.querySelector("#c");
+    //    //    获得一个2D context对象，然后在context对象上调用各种方法来画画。
+    //    var ctx = c.getContext("2d");
+    //
+    //    // 创建一个image对象
+    //    var image = new Image();
+    //
+    //    //等image加载完之后做xxxx
+    //    image.onload = function () {
+    //        console.log("Loaded image");  //image加载完
+    //        ctx.drawImage(image, 0, 0, c.width, c.height);
+    //
+    //        ctx.font = "36pt Impact";  //设置字体
+    //        ctx.textAlign = "center";  //字体居中
+    //
+    //        ctx.fillStyle = "white";  //白色填充
+    //        ctx.fillText("CANVAS MEMES!", c.width / 2, 40);
+    //
+    //        ctx.strokeStyle = "black";  //黑色边框
+    //        ctx.lineWidth = 3;  //边框宽3
+    //        ctx.strokeText("CANVAS MEMES!", c.width / 2, 40);
+    //
+    //
+    //    };
+    //    //    image.src = "http://pic.sogou.com/d?query=%CD%BC%C6%AC&st=255&mode=255&did=24#did23";
+    //    image.src = "xx.png";
+</script>
+</body>
+</html>
