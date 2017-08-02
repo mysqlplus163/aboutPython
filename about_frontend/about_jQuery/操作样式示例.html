@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="x-ua-compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>操作样式示例</title>
+  <style>
+    .d1 {
+      width: 50px;
+      height: 50px;
+      border-radius: 25px;
+      border: 1px solid silver;
+    }
+    .yellow {
+      background-color: yellow;
+    }
+  </style>
+</head>
+<body>
+<div>
+  <div class="d1"></div>
+  <button id="b1" type="button" onclick="toggleYellow();">开关</button>
+</div>
+<script src="jquery-3.2.1.min.js"></script>
+<script>
+  function toggleYellow() {
+    $(".d1").toggleClass("yellow");
+  }
+</script>
+</body>
+</html>
