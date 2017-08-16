@@ -12,6 +12,10 @@ Car.prototype.move = function () {
     this.loc++;
 };
 
-var Van = function (loc) {
 
+// 子类
+var Van = function (loc) {
+Car.call(this, loc);
 };
+
+Van.prototype = Object.create(Car.prototype);

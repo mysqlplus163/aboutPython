@@ -4,9 +4,65 @@
   <meta charset="UTF-8">
   <meta http-equiv="x-ua-compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>$Title$</title>
+  <title>模态框示例</title>
+  <style>
+    .hide {
+      display: none;
+    }
+
+    .shade {
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      /* background-color: black;
+      opacity: 0.6; */
+      background-color: rgba(0, 0, 0, 0.6);
+      z-index: 1000;
+    }
+
+    .modal {
+      height: 200px;
+      width: 400px;
+      background-color: white;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      margin-left: -200px;
+      margin-top: -100px;
+      z-index: 1001;
+    }
+  </style>
 </head>
 <body>
-$END$
+
+<div style="height: 2000px;background-color: #dddddd">
+  <input type="button" value="点我" onclick="showModal();">
+</div>
+
+<!-- 遮罩层start -->
+<div class="shade hide" id="shade"></div>
+<!-- 遮罩层end -->
+<div class="modal hide" id="modal">
+  <a href="javascript:void(0);" onclick="hideModal();">取消</a>
+</div>
+<!-- 模态框end -->
+<script>
+  function showModal() {
+    var t1 = document.getElementById("shade");
+    var t2 = document.getElementById("modal");
+    t1.classList.remove("hide");
+    t2.classList.remove("hide");
+  }
+
+  function hideModal() {
+    var t1 = document.getElementById("shade");
+    var t2 = document.getElementById("modal");
+    t1.classList.add("hide");
+    t2.classList.add("hide");
+
+  }
+</script>
 </body>
 </html>
