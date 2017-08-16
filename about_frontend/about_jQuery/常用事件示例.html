@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="x-ua-compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>常用事件示例</title>
+</head>
+<body>
+<div>
+  <p>常用事件示例</p>
+  <input value="aaa" type="text">
+  <select>
+    <option>1</option>
+    <option>2</option>
+  </select>
+</div>
+<script src="jquery-3.2.1.min.js"></script>
+<script>
+
+// blur
+//  $("input, p").blur(function () {
+//    alert(123);
+//  });
+
+    // change
+//    $("input, select").change(function () {
+//    alert(123);
+//  });
+
+    // click&dblclick
+//      $("p").dblclick(function () {
+//    alert(123);
+//  });
+
+//      $(window).keypress(function (event) {
+//        alert(event.keyCode);
+//      });
+/* mousedown  --> 移到元素上方并按下鼠标按键
+   mouseenter --> 鼠标指针穿过元素
+   mouseleave --> 鼠标指针离开元素
+   mousemove  --> 鼠标指针在元素中移动
+   mouseout  --> 鼠标从元素移开
+   mouseover --> 鼠标位于元素上
+   mouseup  --> 在元素上放松鼠标按钮时
+
+ */
+  $("p").mousemove(function () {
+    alert("mousemove event...");
+
+  })
+
+</script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="x-ua-compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>自定义左侧菜单</title>
+  <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="my-menu.css">
+</head>
+<body>
+<div class="">
+  <div class="my-menu">
+    <div class="brand">
+      品牌标识
+    </div>
+    <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+    <div class="menu-list" id="menu-content">
+      <ul class="group">
+        <li class="menu-head menu-toggle" href="#menu-son1" data-toggle="collapse">
+          <a>菜单一</a>
+
+        </li>
+        <div class="collapse" id="menu-son1">
+          <div class="menu-inner">
+            <ul>
+              <li><a href="">子选项1</a></li>
+              <li><a href="">子选项2</a></li>
+              <li><a href="">子选项3</a></li>
+            </ul>
+          </div>
+        </div>
+      </ul>
+
+      <li class="menu-head menu-toggle" href="#menu-son2" data-toggle="collapse">
+        <a>菜单二</a>
+
+      </li>
+      <div class="collapse" id="menu-son2">
+        <div class="menu-inner">
+          <ul>
+            <li><a href="">子选项1</a></li>
+            <li><a href="">子选项2</a></li>
+            <li><a href="">子选项3</a></li>
+          </ul>
+        </div>
+      </div>
+      <li class="menu-head menu-toggle" href="#menu-son3" data-toggle="collapse">
+        <a>菜单三</a>
+      </li>
+      <div class="collapse" id="menu-son3">
+        <div class="menu-inner">
+          <ul>
+            <li><a href="">子选项1</a></li>
+            <li><a href="">子选项2</a></li>
+            <li><a href="">子选项3</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>

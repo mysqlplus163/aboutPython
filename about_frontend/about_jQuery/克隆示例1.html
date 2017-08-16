@@ -28,7 +28,7 @@
 <script>
     $(function () {
         $("#da").on("click", ".a1", function () {  //对未来（文档加载完之后创建）的元素绑定事件要使用时间委托
-            $(this).clone(true, true).insertAfter(this);
+            $(this).clone().insertAfter(this);
         });
     });
 </script>

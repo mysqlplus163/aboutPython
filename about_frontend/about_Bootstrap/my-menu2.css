@@ -1,0 +1,132 @@
+.body {
+  padding-top: 60px;
+}
+
+/* 我的左侧菜单样式 */
+.my-menu {
+  overflow: auto;
+  font-size: 14px;
+  font-weight: 200;
+  background-color: #2e353d;
+  position: fixed;
+  top: 0;
+  width: 225px;
+  height: 100%;
+  color: #e1ffff;
+}
+
+/* 品牌标识 */
+.my-menu .brand {
+  background-color: #23282e;
+  line-height: 50px;
+  display: block;
+  text-align: center;
+  font-size: 14px;
+}
+
+/* 默认小屏幕下的折叠菜单按钮 不展示 */
+.my-menu .toggle-btn {
+  display: none;
+}
+
+/* 子菜单 */
+.menu-inner li {
+  background-color: #181c20;
+}
+
+.my-menu ul,
+.my-menu li {
+  padding: 0;
+  margin: 0;
+  border: none;
+  list-style: none;
+  line-height: 38px;
+  border-bottom: 1px solid #23282e;
+  cursor: pointer;
+}
+
+/* 菜单字体 */
+.my-menu li a {
+  text-decoration: none;
+  color: #e1ffff;
+}
+
+/* 小屏幕下的菜单栏 */
+.my-menu i {
+  padding-left: 10px;
+  width: 20px;
+  padding-right: 20px;
+}
+
+/* 鼠标移上去显示的样式 */
+.my-menu li:hover {
+  border-left: 3px solid #d19b3d;
+  background-color: #4f5b69;
+  transition: all 1s ease; /* 动画 */
+}
+
+/* 自适应布局 开始 */
+@media (max-width: 767px) {
+  /* 当屏幕宽度不超过767px的时候 应用下面的样式 */
+  .my-menu {
+    position: relative;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .my-menu .toggle-btn { /* 按钮 */
+    display: block;
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    z-index: 10 !important;
+    padding: 3px;
+    background-color: #ffffff;
+    color: #000;
+    width: 40px;
+    text-align: center;
+  }
+
+  .brand { /* 品牌标识 */
+    text-align: left !important;
+    font-size: 22px;
+    padding-left: 20px;
+    line-height: 50px !important;
+  }
+}
+
+/* 自适应布局 结束 */
+
+
+/* 导航栏自定义配置 */
+/* 自定义导航栏颜色 */
+.navbar-inverse {
+    background-color: #181c20;
+    border-color: #23282e;
+}
+
+/* 导航栏商标 */
+.page-logo {
+  width: 110px;
+}
+
+@media (min-width: 767px) {
+  .page-logo {
+    width: 225px;
+    float: left;
+    font-size: 18px;
+    line-height: 20px;
+    display: block;
+    height: 45px;
+    margin-left: -15px;
+    /*padding-left: 20px;*/
+    /*padding-right: 20px;*/
+  }
+}
+
+.page-logo a {
+  text-align: center;
+  vertical-align: middle;
+  margin-top: 16px;
+}

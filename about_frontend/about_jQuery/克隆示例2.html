@@ -13,7 +13,7 @@
 <div id="da">
   <p>
     <a class="a1">点我+</a>
-    <input type="text">
+    <input class="i1" type="text">
   </p>
 </div>
 
@@ -22,11 +22,17 @@
 <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script>
   $(function () {
-    $("#da").on("click", ".a1", function () {  //对未来（文档加载完之后创建）的元素绑定事件要使用时间委托
-      var temp =  $(this).parent();
-      console.log(temp);
-      temp.clone(true).insertAfter(temp);
+
+    $(":input").change(function () {
+      alert(123);
     });
+
+    $("#da").on("click", ".a1", function () {  //对未来（文档加载完之后创建）的元素绑定事件要使用时间委托
+      var temp =  $(this).next();
+      console.log(temp);
+      temp.clone().insertAfter(temp);
+    });
+
   });
 </script>
 </body>

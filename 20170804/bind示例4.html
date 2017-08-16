@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="x-ua-compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>bind示例3</title>
+</head>
+<body>
+<div>
+  <a class="a1">aaa</a>
+
+</div>
+<script src="jquery-3.2.1.min.js"></script>
+<script>
+  $("div").on("click", "a", function () {
+    alert(1234);
+  });
+
+  var tmp = document.createElement("a");
+  tmp.innerText = "aaa";
+  $(tmp).appendTo($("div"));
+
+</script>
+</body>
+</html>

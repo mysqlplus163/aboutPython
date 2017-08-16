@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="x-ua-compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>delegate示例</title>
+</head>
+<body>
+<div>
+  <input class="b1" type="button" value="点我">
+</div>
+<script src="jquery-3.2.1.min.js"></script>
+<script>
+  $("body").delegate(".b1", "click", function () {
+    $(this).clone().insertAfter(this);
+  });
+
+</script>
+</body>
+</html>
