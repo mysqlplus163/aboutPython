@@ -4,9 +4,25 @@
   <meta charset="UTF-8">
   <meta http-equiv="x-ua-compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>$Title$</title>
+  <title>CSS样式优先级</title>
+
+
+  <style>
+    #a1 {
+      color: red;
+    }
+
+    .c1 {
+      color: green;
+    }
+    a {
+      color: deeppink;
+    }
+  </style>
 </head>
 <body>
-$END$
+
+<a id="a1" class="c1">屠龙宝刀，点击就送</a>
+
 </body>
 </html>
