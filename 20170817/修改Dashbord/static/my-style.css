@@ -45,6 +45,9 @@ body {
   padding: 5px 15px;
   display: inline-block;
 }
+.navbar-fixed-top {
+     border: none;
+}
 
 /* 自定义左侧菜单栏开始*/
 .my-menu-item {
@@ -71,6 +74,22 @@ body {
 .my-menu-item > a:hover {
  text-decoration: none;
   color: white;
+}
+
+.sidebar {
+  background-color: #35363a;
+}
+.sidebar ul li{
+  background-color: #27272B;
+  border-bottom: 1px solid #222222;
+}
+.sidebar ul a{
+  color: #eeeeee;
+}
+.nav>li>a:focus,
+.nav>li>a:hover {
+    text-decoration: none;
+    background-color: #222222;
 }
 
 .nav-sidebar {
