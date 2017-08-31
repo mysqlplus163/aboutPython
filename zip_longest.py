@@ -13,3 +13,14 @@ for i, j in zip_longest(l1, l2):
 
 z = list(zip(l1, l2))
 print(z)
+
+l3 = [("a",), ("b",)]
+l4 = [("c",), ("d",)]
+
+# [{"a": "b"}, {"c":"d"}]
+
+# ret = [dict({lambda k: k[0] :lambda v:v[0]}) for k in l3 for v in l4]
+# ret = [lambda x, y:dict({x[0]:y[0]}) for x, y in zip(l3, l4)]
+ret = [dict({x[0]:y[0]}) for x, y in zip(l3, l4)]
+print(ret)
+
