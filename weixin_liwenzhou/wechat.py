@@ -20,8 +20,8 @@ response = req.post(
         "Referer": "https://mp.weixin.qq.com/"
     },
     data={
-        "username": "xxxxxxx",
-        "pwd": "xxxxxxxx",
+        "username": "xxx",
+        "pwd": "xxx",
         "imgcode": None,
         "f": "json",
         "token": None,
@@ -29,6 +29,7 @@ response = req.post(
         "ajax": 1,
     }
 )
+print(response.json())
 redirect_url = "https://mp.weixin.qq.com%s" % response.json()["redirect_url"]
 # sweep_code_html = req.get(url=redirect_url)
 # print(sweep_code_html.text)
@@ -68,7 +69,7 @@ while go:
 
 print('ending')
 # 爬取主页面HTML
-index = req.get(home_url, headers={"User-Agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36"})
+index = req.get(home_url)
 print(index.text)
 dom_obj = pyquery.PyQuery(index.text)
 
