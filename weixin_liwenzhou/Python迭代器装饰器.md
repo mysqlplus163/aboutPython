@@ -62,58 +62,59 @@ StopIteration
 这里补充说明两点：
 
 
-1.  Python中内置的`iter`和`next`方法，其实就是执行的目标的`__iter__`和`__next__`方法。
+1.Python中内置的`iter`和`next`方法，其实就是执行的目标的`__iter__`和`__next__`方法。
 
-    ```python
-    >>> l = [1, 2, 3]  # 这里是一个列表
-    >>> i = iter(l)  # 使用Python内置的iter方法
-    >>> i  # 得到一个迭代器
-    <list_iterator object at 0x104db2a58>
-    >>> next(i)  # 使用Python内置的next方法拿一个数据
-    1
-    >>> next(i)  # 拿一个数据
-    2
-    >>> next(i)  # 拿一个数据
-    3
-    >>> next(i)  # 在迭代器 i 中再也拿不出数据了
-    Traceback (most recent call last):
-      File "<stdin>", line 1, in <module>
-    StopIteration
-    ```
-
-
-2.  多次执行iter()或调用__iter__()得到的迭代器都是完全不同的对象。
-    你可以把它们想象成一次性塑料袋装的苹果，你执行一次iter()或调用一次__iter__()，你就得到一袋用一次性塑料袋装的苹果。（这个袋子是真的一次性，无法重复使用。）
-
-    ```python
-    >>> l = [1, 2, 3]
-    >>> i1 = iter(l)  # 得到一个迭代器
-    >>> i2 = iter(l)  # 得到一个迭代器
-    >>> i1 == i2  # 这两个迭代器是不同的迭代器
-    False
-    >>> id(i1) == id(i2)
-    False
-    >>> id(i1)
-    4376439496
-    >>> id(i2)
-    4376439608
-    ```
+```python
+>>> l = [1, 2, 3]  # 这里是一个列表
+>>> i = iter(l)  # 使用Python内置的iter方法
+>>> i  # 得到一个迭代器
+<list_iterator object at 0x104db2a58>
+>>> next(i)  # 使用Python内置的next方法拿一个数据
+1
+>>> next(i)  # 拿一个数据
+2
+>>> next(i)  # 拿一个数据
+3
+>>> next(i)  # 在迭代器 i 中再也拿不出数据了
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+StopIteration
+```
 
 
-3. 迭代器是有状态的
+2.多次执行iter()或调用__iter__()得到的迭代器都是完全不同的对象。
 
-    当你调用迭代器的`__next__()`取值的时候，并且已经被取出的值不会再次取出。
-    ```python
-    >>> l = [1, 2, 3]
-    >>> i1 = iter(l)
-    >>> i2 = iter(l)
-    >>> next(i1)
-    1
-    >>> next(i2)
-    1
-    >>> next(i1)  # 能记住状态，从上一次结束的地方再开始
-    2
-    ```
+你可以把它们想象成一次性塑料袋装的苹果，你执行一次iter()或调用一次__iter__()，你就得到一袋用一次性塑料袋装的苹果。（这个袋子是真的一次性，无法重复使用。）
+
+```python
+>>> l = [1, 2, 3]
+>>> i1 = iter(l)  # 得到一个迭代器
+>>> i2 = iter(l)  # 得到一个迭代器
+>>> i1 == i2  # 这两个迭代器是不同的迭代器
+False
+>>> id(i1) == id(i2)
+False
+>>> id(i1)
+4376439496
+>>> id(i2)
+4376439608
+```
+
+
+3.迭代器是有状态的
+
+当你调用迭代器的`__next__()`取值的时候，并且已经被取出的值不会再次取出。
+```python
+>>> l = [1, 2, 3]
+>>> i1 = iter(l)
+>>> i2 = iter(l)
+>>> next(i1)
+1
+>>> next(i2)
+1
+>>> next(i1)  # 能记住状态，从上一次结束的地方再开始
+2
+```
 
 
 ## 生成器(generator)
@@ -162,40 +163,40 @@ StopIteration
 Python中有两种得到生成器的方式：
 
 
-1.  生成器表达式
+1.生成器表达式
 
-    在这之前我们先复习一下`列表推导式`：
+在这之前我们先复习一下`列表推导式`：
 
-    ```python
-    >>> l = [i for i in range(11) if i%2 != 0]
-    >>> l
-    [1, 3, 5, 7, 9]
-    ```
+```python
+>>> l = [i for i in range(11) if i%2 != 0]
+>>> l
+[1, 3, 5, 7, 9]
+```
 
-    生成器表达式就是把上面列表推导式的`[]`换成了`()`:
-    ```python
-    >>> g = (i for i in range(11) if i%2 != 0)
-    >>> g
-    <generator object <genexpr> at 0x104da47d8>
-    ```
+生成器表达式就是把上面列表推导式的`[]`换成了`()`:
+```python
+>>> g = (i for i in range(11) if i%2 != 0)
+>>> g
+<generator object <genexpr> at 0x104da47d8>
+```
 
 
 
-2.  yield关键字
+2.yield关键字
 
-    简单的计算逻辑我们可以使用生成器表达式，复杂一点的我们只能通过带有`yield`关键字的函数来处理了。
-    当一个函数内部通过yield来返回值的时候，这个函数返回的就是生成器。
+简单的计算逻辑我们可以使用生成器表达式，复杂一点的我们只能通过带有`yield`关键字的函数来处理了。
+当一个函数内部通过yield来返回值的时候，这个函数返回的就是生成器。
 
-    ```python
-    >>> def func():  # 定义一个通过yield关键字返回值的函数
-    ...   for i in range(11):
-    ...     if i%2!=0:
-    ...       yield i  # 返回符合条件的数据
-    ...
-    >>> g = func()  # 执行函数
-    >>> g  # 得到一个生成器
-    <generator object func at 0x104da4830>
-    ```
+```python
+>>> def func():  # 定义一个通过yield关键字返回值的函数
+...   for i in range(11):
+...     if i%2!=0:
+...       yield i  # 返回符合条件的数据
+...
+>>> g = func()  # 执行函数
+>>> g  # 得到一个生成器
+<generator object func at 0x104da4830>
+```
 
 应用：
 
