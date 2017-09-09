@@ -46,8 +46,3 @@ def hello():
     return "Hello sogou!"
 
 # 我希望得到<b><i>Hello sogou!</i></b>，如何实现？
-
-
-
-
-
