@@ -53,11 +53,11 @@ LOGGING_DIC = {
         },
         'default': {
             'level': 'DEBUG',
-            'class': 'logging.handlers.RotatingFileHandler',  # 保存到文件
+            'class': 'logging.handlers.RotatingFileHandler',  # 保存到文件。自动切日志
             'filename': logfile_path,  # 日志文件
             'maxBytes': 1024*1024*5,  # 日志大小 5M
-            'backupCount': 5,
-            'formatter': 'standard',
+            'backupCount': 5,  # 日志文件备份个数
+            'formatter': 'standard',  # 使用的日志文件格式
             'encoding': 'utf-8',  # 日志文件的编码，再也不用担心中文log乱码了
         },
     },
@@ -69,6 +69,7 @@ LOGGING_DIC = {
         },
     },
 }
+
 logging.config.dictConfig(LOGGING_DIC)  # 导入上面定义的配置
 logger = logging.getLogger(__name__)  # 生成一个log实例
-logger.info('It works!')  # 记录该文件的运行状态
+logger.info('It works!')  # 记录该日志配置文件的运行状态

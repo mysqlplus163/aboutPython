@@ -19,5 +19,6 @@ from app01 import views
 
 urlpatterns = [
     url(r'^index/', views.index),
+    url(r'^books/', views.BooksListView.as_view(), name="book-list"),
     url(r'^admin/', admin.site.urls),
 ]
