@@ -7,10 +7,7 @@
 
 无论是Python开发的后端程序还是基于Django的Web项目都可以使用这个logging配置。
 
-<<<<<<< HEAD
 废话不多说下面直接上代码。
-=======
-废话不多说直接上代码：
 
 ```python
 >>>>>>> d2b7e16bfe705cd78f2d78ee65e2fdd06e10b4f5
