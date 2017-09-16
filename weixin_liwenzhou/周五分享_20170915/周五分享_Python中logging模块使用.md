@@ -7,7 +7,13 @@
 
 无论是Python开发的后端程序还是基于Django的Web项目都可以使用这个logging配置。
 
+<<<<<<< HEAD
 废话不多说下面直接上代码。
+=======
+废话不多说直接上代码：
+
+```python
+>>>>>>> d2b7e16bfe705cd78f2d78ee65e2fdd06e10b4f5
 
 `init_logging.py`文件：
 
@@ -80,7 +86,7 @@ logging.config.dictConfig(LOGGING_DIC)  # 导入上面定义的配置
 logger = logging.getLogger(__name__)  # 生成一个log实例
 logger.info('It works!')  # 记录该日志配置文件的运行状态
 
- ```
+```
 
 ## 在后端程序使用
 
