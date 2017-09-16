@@ -1,29 +1,34 @@
 # Python中logging配置分享
 
-今天给大家分享的是我职业生涯至今一直再用的一份Python logging配置。
+在软件开发工作中，日志一直是一个十分重要的必备环节。
+作为Python程序员是十分幸福的，因为Python内置的logging模块足够强大，基本能够满足我们开发过程中的日志需求。
+
+今天我要给大家分享的是我职业生涯至今一直在用的一份Python logging配置。
 
 无论是Python开发的后端程序还是基于Django的Web项目都可以使用这个logging配置。
 
-废话不多说直接上代码：
- ```python
+废话不多说下面直接上代码。
 
+`init_logging.py`文件：
+
+ ```python
 import os
 import logging.config
 
-# 定义三种日志输出格式 开始
+# 定义三种日志输出格式
 
+# 1.标准日志格式
 standard_format = '[%(asctime) -s][%(threadName)s:%(thread)d][task_id:%(name)s][%(filename)s:%(lineno)d]' \
                   '[%(levelname)s][%(message)s]'
-
+# 2.简单日志格式
 simple_format = '[%(levelname)s][%(asctime)s][%(filename)s:%(lineno)d]%(message)s'
 
+# 3.只记录ID的日志格式
 id_simple_format = '[%(levelname)s][%(asctime)s] %(message)s'
-
-# 定义日志输出格式 结束
 
 logfile_dir = os.path.dirname(os.path.abspath(__file__))  # log文件的目录
 
-logfile_name = 'all2.log'  # log文件名
+logfile_name = 'xxx.log'  #  定义日志文件名
 
 # 如果不存在定义的日志目录就创建一个
 if not os.path.isdir(logfile_dir):
@@ -32,20 +37,20 @@ if not os.path.isdir(logfile_dir):
 # log文件的全路径
 logfile_path = os.path.join(logfile_dir, logfile_name)
 
-# log配置字典
+# logging配置字典
 LOGGING_DIC = {
     'version': 1,
     'disable_existing_loggers': False,
     'formatters': {
         'standard': {
-            'format': standard_format,
-            'datefmt': '%Y-%m-%d %H:%M:%S',
+            'format': standard_format,  # 使用我们上面定义的standard_format
+            'datefmt': '%Y-%m-%d %H:%M:%S',  # 时间格式
         },
         'simple': {
-            'format': simple_format
+            'format': simple_format  # 使用我们上面定义的simple_format
         },
     },
-    'filters': {},
+    'filters': {},  # 不配置过滤
     'handlers': {
         'console': {
             'level': 'DEBUG',
@@ -98,7 +103,7 @@ logger.error("...")  # 记录error日志
 
 ## 在Django项目中使用
 
-只需要将上述logging配置，整理成一个字典，放到`your/project/settings.py中即可：
+只需要将上述logging配置，整理成一个字典，放到`your/project/settings.py`中即可：
 
 ```python
 # settings.py
@@ -128,7 +133,7 @@ LOGGING = {
     'handlers': {
         'console': {
             'level': 'DEBUG',
-            'filters': ['require_debug_true'],
+            'filters': ['require_debug_true'],  # 只有在Django debug为True时才在屏幕打印日志
             'class': 'logging.StreamHandler',
             'formatter': 'simple'
         },
@@ -169,7 +174,7 @@ LOGGING = {
         },
         # 名为 'collect'的logger还单独处理
         'collect': {
-            'handlers': ['console', 'collect'],  # 上线之后可以把'console'移除
+            'handlers': ['console', 'collect'],
             'level': 'INFO',
         }
     },
@@ -187,7 +192,13 @@ import logging
 
 logger = logging.getLogger("__name__")  # 生成一个以当前模块名为名字的logger实例
 c_logger = logging.getLogger("collect")  # 生成一个名为'collect'的logger实例，用于收集一些需要特殊记录的日志
+
+# 使用定义的logger记录日志
+logger.info("....")
+c_logger.info("隔壁老王登陆了，请注意...")  # 此日志会被收集到xxx_collect.log中。
 ```
 
-## 最后附上我翻译的Python官网的日志流图
+## 日志流
+
+最后附上我翻译的Python官网的日志流图：
 
