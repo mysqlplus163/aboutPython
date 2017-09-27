@@ -6,6 +6,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>offcanvas</title>
   <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    @media screen  and (max-width: 768px) {
+      #sidebar {
+        position: absolute;
+        right: -50%;
+        width: 50%;
+      }
+
+      .row-offcanvas {
+        position: relative;
+        -webkit-transition: all .25s ease-out;
+        -o-transition: all .25s ease-out;
+        transition: all .25s ease-out;
+      }
+
+      .row-offcanvas-right {
+        right: 0;
+      }
+
+      .row-offcanvas-right.active {
+        right: 50%;
+      }
+    }
+
+  </style>
 </head>
 <body>
 <nav class="navbar navbar-inverse">
@@ -63,11 +89,11 @@
 
 <div class="container">
 
-  <div class="row row-offcanvas row-offcanvas-right">
+  <div class="row row-offcanvas row-offcanvas-right" id="tt">
     <div class="col-xs-12 col-sm-9">
       <p class="pull-right visible-xs">
-            <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
-          </p>
+        <button type="button" class="btn btn-primary btn-xs" id="ts" data-toggle="offcanvas">Toggle nav</button>
+      </p>
       <div class="jumbotron">
         <h1>Hello, world!</h1>
         <p>...</p>
@@ -134,5 +160,38 @@
 
 <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script>
+
+  function hasClass(obj, cls) {
+    return obj.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'));
+  }
+
+  function addClass(obj, cls) {
+    if (!this.hasClass(obj, cls)) obj.className += " " + cls;
+  }
+
+  function removeClass(obj, cls) {
+    if (hasClass(obj, cls)) {
+      var reg = new RegExp('(\\s|^)' + cls + '(\\s|$)');
+      obj.className = obj.className.replace(reg, ' ');
+    }
+  }
+
+  function toggleClass(obj, cls) {
+    if (hasClass(obj, cls)) {
+      removeClass(obj, cls);
+    } else {
+      addClass(obj, cls);
+    }
+  }
+
+
+  var ts = document.getElementById("ts");
+  var tt = document.getElementById("tt");
+  ts.onclick = function () {
+    console.log(11);
+    toggleClass(tt, "active")
+  }
+</script>
 </body>
 </html>

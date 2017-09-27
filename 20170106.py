@@ -20,6 +20,7 @@ def f(s):
     s += "hi"
     print(s)
 
+
 c(l1)
 print(l1)
 print(id(l1))
@@ -34,5 +35,6 @@ def func():
         print(i)
     time.sleep(5)
     print(i)
+
 
 func()
