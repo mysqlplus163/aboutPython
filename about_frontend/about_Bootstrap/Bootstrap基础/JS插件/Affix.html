@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="x-ua-compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Affix demo</title>
+  <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .category {
+      height: 900px;
+    }
+    .affix li.active a{
+        color: #fff;
+        background: #0088cc;
+        border: 1px solid #0088cc;
+    }
+  </style>
+</head>
+<body data-spy="scroll" data-target="#myScrollspy">
+<div class="container">
+  <div class="row">
+    <div class="col-md-3" id="myScrollspy">
+      <ul class="nav nav-list bs-docs-sidenav affix" data-spy="affix" data-offset-top="125">
+        <li class="active"><a href="#a"><i class="icon-chevron-right"></i> 概览</a></li>
+        <li><a href="#b"><i class="icon-chevron-right"></i> 过渡效果</a></li>
+        <li><a href="#c"><i class="icon-chevron-right"></i> 模态对话框</a></li>
+        <li><a href="#d"><i class="icon-chevron-right"></i> 下拉菜单</a></li>
+        <li><a href="#e"><i class="icon-chevron-right"></i> 滚动监听</a></li>
+        <li><a href="#f"><i class="icon-chevron-right"></i> 标签页</a></li>
+        <li><a href="#g"><i class="icon-chevron-right"></i> 工具提示</a></li>
+        <li class=""><a href="#h"><i class="icon-chevron-right"></i> 弹出提示</a></li>
+      </ul>
+    </div>
+    <div class="col-md-9">
+      <div id="a" class="category">概览</div>
+      <div id="b" class="category">过渡效果</div>
+      <div id="c" class="category">模态对话框</div>
+      <div id="d" class="category">下拉菜单</div>
+      <div id="e" class="category">滚动监听</div>
+      <div id="f" class="category">标签页</div>
+      <div id="g" class="category">工具提示</div>
+      <div id="h" class="category">弹出提示</div>
+    </div>
+  </div>
+</div>
+<script src="https://cdn.bootcss.com/jquery/3.2.0/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>
