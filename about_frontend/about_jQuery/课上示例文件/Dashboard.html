@@ -140,7 +140,7 @@
         <div class="panel-body">
           <div class="row my-table-toolbar">
             <div class="col-md-12">
-              <button class="btn btn-success pull-right">添加</button>
+              <button class="btn btn-success pull-right" data-toggle="modal" data-target="#myModal">添加</button>
             </div>
           </div>
           <div class="table-responsive">
@@ -205,6 +205,46 @@
   </div>
 </div>
 
+
+<!--模态框开始 -->
+<div id="myModal" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+            aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">xxxx</h4>
+      </div>
+      <div class="modal-body">
+        <form class="form-horizontal">
+          <div class="form-group">
+            <label for="modal-username" class="col-sm-2 control-label">用户名</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="modal-username" placeholder="用户名">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="modal-email" class="col-sm-2 control-label">邮箱</label>
+            <div class="col-sm-10">
+              <input type="email" class="form-control" id="modal-email" placeholder="邮箱">
+            </div>
+          </div>
+                    <div class="form-group">
+            <label for="modal-habit" class="col-sm-2 control-label">爱好</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="modal-habit" placeholder="爱好">
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+        <button type="button" class="btn btn-primary">提交</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!--模态框结束 -->
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
