@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="x-ua-compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>周末作业之登录验证</title>
+  <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      background-color: #eeeeee;
+    }
+
+    .login {
+      margin-top: 100px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="row">
+    <div class="login col-md-4 col-md-offset-3">
+      <div class="form-group">
+        <label class="control-label" for="username">用户名</label>
+        <input type="text" class="form-control" id="username" aria-describedby="username-help">
+        <span id="username-help" class="help-block"></span>
+      </div>
+      <div class="form-group">
+        <label class="control-label" for="password">密码</label>
+        <input type="text" class="form-control" id="password" aria-describedby="password-help">
+        <span id="password-help" class="help-block"></span>
+      </div>
+      <button id="btn-submit" class="btn btn-primary">登录</button>
+    </div>
+  </div>
+</div>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script>
+  $("#btn-submit").on("click", function () {
+    $(".login input").each(function () {
+      if ($(this).val().length === 0) {
+        $(this).parent().addClass("has-error");
+        var name = $(this).prev().text();
+        $(this).next().text(name + "不能为空");
+      }
+    })
+  })
+</script>
+</body>
+</html>
