@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="x-ua-compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CSS和尺寸</title>
+</head>
+<body>
+<div id="d1">111</div>
+
+<script src="jquery-3.2.1.min.js"></script>
+<script>
+  $("#d1").css("color");  // 获取颜色
+  // 这里要补充一下 重复选择器应该用变量名存一下，减少重复查找DOM的
+  $("#d1").css("color", "#336699");  // 设置color
+
+  // 同时设置多个CSS属性
+  $("#d1").css({"color": "#336699", "border": "1px solid #cccccc"});\
+
+  // 问 如何获取多个CSS属性值？
+  $("#d1").css(["color", "border"]);
+
+  // 还可以设置函数
+  $("#d1").css({"width": function (index) {
+    return index * 50
+  }});
+
+  // innerHeight 比 height多一个padding上下
+  // outerHeight 比 innerHeight 差一个border-width
+
+
+</script>
+</body>
+</html>

@@ -140,11 +140,11 @@
         <div class="panel-body">
           <div class="row my-table-toolbar">
             <div class="col-md-12">
-              <button class="btn btn-success pull-right" data-toggle="modal" data-target="#myModal">添加</button>
+              <button id="add" class="btn btn-success pull-right" data-toggle="modal" data-target="#myModal">添加</button>
             </div>
           </div>
           <div class="table-responsive">
-            <table class="table table-striped table-bordered">
+            <table id="t1" class="table table-striped table-bordered">
               <thead>
               <tr>
                 <th>#</th>
@@ -229,7 +229,7 @@
               <input type="email" class="form-control" id="modal-email" placeholder="邮箱">
             </div>
           </div>
-                    <div class="form-group">
+          <div class="form-group">
             <label for="modal-habit" class="col-sm-2 control-label">爱好</label>
             <div class="col-sm-10">
               <input type="text" class="form-control" id="modal-habit" placeholder="爱好">
@@ -260,7 +260,61 @@
   $(".menu-heading").on("click", function () {
     $(this).parent().siblings().children("ul").addClass("hide");
     $(this).next().toggleClass("hide");
-  })
+  });
+
+  $("tbody").on("click", "td>button.btn-danger", function () {
+    // $(this).parentsUntil("tbody").remove();
+    $(this).parent().parent().remove();
+  });
+
+  $("tbody").on("click", "td>button.btn-warning", function () {
+    var trEle = $(this).parent().parent();
+    var username = trEle.children().eq(1).text();
+    var email = trEle.children().eq(2).text();
+    var habit = trEle.children().eq(3).text();
+    console.log(username, email, habit);
+
+    $("#myModal").data("tr", trEle);
+
+    $("#modal-username").val(username);
+    $("#modal-email").val(email);
+    $("#modal-habit").val(habit);
+    $("#myModal").modal("show");
+  });
+
+  $(".modal-footer>button.btn-primary").on("click", function () {
+    var username = $("#modal-username").val();
+    var email = $("#modal-email").val();
+    var habit = $("#modal-habit").val();
+
+    var trEle = $("#myModal").data("tr");
+    // 如果是新添加的
+    if (trEle === undefined) {
+      var trTmp = document.createElement("tr");
+      $(trTmp).append("<td>" + $("tbody").children("tr").size() + 1 + "</td>");
+      $(trTmp).append("<td>" + username + "</td>");
+      $(trTmp).append("<td>" + email + "</td>");
+      $(trTmp).append("<td>" + habit + "</td>");
+      $(trTmp).append("<td>" + "<button class=\"btn btn-warning\">编辑</button><button class=\"btn btn-danger\">删除</button>" + "</td>");
+
+      $(trTmp).appendTo($("tbody"));
+      $("#myModal input").val("");
+      $("#myModal").removeData("tr").modal("hide");
+    } else {
+      trEle.children().eq(1).text(username);
+      trEle.children().eq(2).text(email);
+      trEle.children().eq(3).text(habit);
+
+      $("#myModal input").val("");
+      $("#myModal").removeData("tr").modal("hide");
+    }
+
+  });
+
+  $("#add").on("click", function () {
+    $("#myModal input").val("");
+  });
+
 </script>
 </body>
 </html>
