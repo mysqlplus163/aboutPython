@@ -12,26 +12,25 @@
           if (jq(this).attr("required")) {
             if (jq(this).val().length === 0) {
               showError(this, "不能为空");
+              return false;
             }
-            console.log("不为空");
-            var minLength = arg2[jq(this).attr("name")]["min-length"];
-            console.log(minLength);
+            var minLength = arg2[jq(this).attr("id")]["min-length"];
             if (minLength !== undefined) {
               if (jq(this).val().length < minLength) {
                 showError(this, "不能低于"+minLength+"位");
+                return false;
               }
             }
           }
         });
         return false;
       });
-    };
-
-  function showError(ele, msg) {
-    jq(ele).parent().addClass("has-error");
-    var name = jq(this).prev().text();
-    jq(this).next().text(name + msg);
-    return false;
-  }
+    }
   });
+
+    function showError(ele, msg) {
+    jq(ele).parent().addClass("has-error");
+    var name = jq(ele).prev().text();
+    jq(ele).next().text(name + msg);
+  }
 })(jQuery);
