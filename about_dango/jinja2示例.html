@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="x-ua-compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Title</title>
+</head>
+<body>
+
+<table border="1">
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>username</th>
+    <th>department_id</th>
+  </tr>
+  </thead>
+  <tbody>
+  {% for user in user_list%}
+    <tr>
+      <td>{{user.uid}}</td>
+      <td>{{user.name}}</td>
+      <td>{{user.department_id}}</td>
+    </tr>
+  {% endfor%}
+  </tbody>
+</table>
+</body>
+</html>

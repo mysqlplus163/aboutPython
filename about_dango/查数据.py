@@ -1,11 +1,13 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
 # __author__ = "Q1mi"
-# Date: 2017/8/25
+# Date: 2017/11/2
 
 """
-jinja2演示示例
+从数据库查数据
+引出模板渲染
 """
+
 
 import socket
 
@@ -20,16 +22,18 @@ def f1():
     cursor.close()
     conn.close()
     print(user_list)
+    html_str = ""
+    for i in user_list:
+        html_str += "<tr>"
+        for k in i:
+            html_str += "<td>{}</td>".format(i.get(k))
+        html_str += "</tr>"
 
-    with open("jinja2示例.html") as f:
+    with open("table.html") as f:
         source_data = f.read()
+    result = source_data.replace("@@tbody@@", html_str)
 
-    # 使用jinja2模板渲染
-    from jinja2 import Template
-    template = Template(source_data)
-    data = template.render(user_list=user_list)
-
-    return data
+    return result
 
 
 def f2():
@@ -37,7 +41,7 @@ def f2():
 
 
 routers = [
-    ("/jinja2", f1),
+    ("/xxx", f1),
     ("/ooo", f2),
 ]
 

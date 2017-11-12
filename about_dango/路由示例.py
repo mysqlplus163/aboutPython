@@ -11,9 +11,7 @@ import socket
 
 
 s = socket.socket()
-
 s.bind(("127.0.0.1", 8080))
-
 s.listen(5)
 
 while True:
@@ -25,7 +23,6 @@ while True:
     method, url, protocal = value_list[0].split(" ")
 
     conn.send(b"HTTP/1.1 200 OK\r\n\r\n")
-
     if url == "/xxx":
         conn.send(b"xxx")
     else:

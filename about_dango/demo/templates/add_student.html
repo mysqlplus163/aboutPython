@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="x-ua-compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>添加学生</title>
+</head>
+<body>
+
+<h1>添加学生</h1>
+
+<form action="add_student/" method="post">
+  <p>学生姓名:<input name="name" type="text"></p>
+  <p>所属班级：
+    <select name="class" id="">
+      {% for class in class_list%}
+      <option value="{{class.id}}">{{class.title}}</option>
+      {% endfor %}
+    </select>
+  </p>
+  <input type="submit" value="提交">
+</form>
+</body>
+</html>

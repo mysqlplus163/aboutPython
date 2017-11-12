@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="x-ua-compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>模态框方式添加班级</title>
+  <style>
+    .hide {
+      display: none;
+    }
+
+    .shadow {
+      position: fixed;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      background-color: black;
+      opacity: 0.4;
+      z-index: 999;
+    }
+    .modal {
+      z-index: 1000;
+      position: fixed;
+      left: 50%;
+      top: 50%;
+      height: 300px;
+      width: 400px;
+      background-color: white;
+      margin-top: -150px;
+      margin-left: -200px;
+
+    }
+  </style>
+</head>
+<body>
+<h1>班级列表</h1>
+
+<div>
+  <a href="/add_class/">添加</a>
+  <a href="/modal_add_class/" onclick="showModal();">模态框添加</a>
+</div>
+
+<table>
+
+</table>
+
+<div id="shadow" class="shadow hide"></div>
+<div id="modal" class="modal hide">
+  <form action="/modal_add_class/" method="post">
+   <p>班级名称：
+     <input type="text" name="title">
+   </p>
+  <input type="submit" value="提交">
+    </form>
+</div>
+
+<script>
+  function showModal() {
+    document.getElementById("shadow").classList.remove("hide");
+    document.getElementById("modal").classList.remove("hide");
+  }
+</script>
+</body>
+</html>

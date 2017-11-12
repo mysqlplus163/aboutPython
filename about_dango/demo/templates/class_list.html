@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="x-ua-compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>班级列表</title>
+    <style>
+    .hide {
+      display: none;
+    }
+
+    .shadow {
+      position: fixed;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      background-color: black;
+      opacity: 0.4;
+      z-index: 999;
+    }
+    .modal {
+      z-index: 1000;
+      position: fixed;
+      left: 50%;
+      top: 50%;
+      height: 300px;
+      width: 400px;
+      background-color: white;
+      margin-top: -150px;
+      margin-left: -200px;
+
+    }
+  </style>
+</head>
+<body>
+<h1>班级列表</h1>
+
+<div>
+  <a href="/add_class/">添加</a>
+  <a onclick="showModal();">模态框添加</a>
+</div>
+
+<table border="1">
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>班级名称</th>
+    <th>操作</th>
+  </tr>
+  </thead>
+  <tbody>
+  {% for class in class_list %}
+    <tr>
+      <td>{{ class.id }}</td>
+      <td>{{ class.title }}</td>
+      <td><a href="/delete_class/?nid={{ class.id }}">删除</a>|<a href="/edit_class/?nid={{ class.id }}">编辑</a></td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+<!--后期添加模态框-->
+
+<div id="shadow" class="shadow hide"></div>
+<div id="modal" class="modal hide">
+  <form action="/modal_add_class/" method="post">
+   <p>班级名称：
+     <span id="errormsg"></span>
+     <input id="title" type="text" name="title">
+   </p>
+  <input type="button" value="提交" onclick="ajaxSubmit();return false;">
+    </form>
+</div>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  function showModal() {
+    document.getElementById("shadow").classList.remove("hide");
+    document.getElementById("modal").classList.remove("hide");
+  }
+  
+  function ajaxSubmit() {
+    var data = {"aaa": 111, "bbb": 222};
+    var data1 = [111, 222, 333];
+    $.ajax({
+      url: "/modal_add_class/",
+      type: "POST",
+      data: {"title": $("#title").val(), "data": JSON.stringify(data1)},
+//      data: {"title": $("#title").val(), "data": data1},
+//      processData: false,
+      success: function (data) {
+        // 当服务端处理完成后，返回数据时，该函数自动调用
+        // data=服务端返回的值
+        console.log(data);
+        if (data === "ok"){
+          location.href="/class_list/";
+        }else {
+          $("#errormsg").text(data);
+        }
+      }
+    })
+  }
+  </script>
+</body>
+</html>

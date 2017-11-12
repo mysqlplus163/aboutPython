@@ -16,9 +16,18 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from app01 import views
+from app_demo.views import edit_class, class_list, add_class, delete_class, student_list, add_student, edit_student, modal_add_class
 
 urlpatterns = [
     url(r'^index/', views.index),
     url(r'^books/', views.BooksListView.as_view(), name="book-list"),
     url(r'^admin/', admin.site.urls),
+    url(r'^edit_class/', edit_class),
+    url(r'^class_list/', class_list),
+    url(r'^add_class/', add_class),
+    url(r'^delete_class/', delete_class),
+    url(r'^student_list/', student_list),
+    url(r'^add_student/', add_student),
+    url(r'^edit_student/', edit_student),
+    url(r'^modal_add_class/', modal_add_class),
 ]

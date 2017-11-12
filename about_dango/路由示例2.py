@@ -9,12 +9,13 @@
 
 import socket
 
+
 def f1():
-    pass
+    return "xxx->f1"
 
 
 def f2():
-    pass
+    return "ooo->f2"
 
 
 routers = [
