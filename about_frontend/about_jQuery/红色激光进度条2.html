@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="x-ua-compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>红色激光进度条2</title>
+
+  <style>
+    body {
+      margin: 0;
+    }
+    #progress {
+      height: 2px;
+      background-color: #b91f1f;
+      transition: opacity 500ms linear;
+    }
+    #progress.done{
+      opacity: 0;
+    }
+  </style>
+</head>
+<body>
+
+<div id="progress"></div>
+<script src="jquery-3.2.1.min.js"></script>
+<script>
+  $({property:0}).animate({property:100}, {
+    duration: 3000,
+    step: function () {
+      var percentage = Math.round(this.property);
+      var $progressObj = $("#progress");
+      $progressObj.css("width", percentage+"%");
+      if (percentage === 100){
+        $progressObj.addClass("done");
+      }
+    }
+  });
+</script>
+</body>
+</html>

@@ -6,11 +6,45 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>jQuery选择器筛选器练习</title>
   <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <style>
+
+    .my-padding {
+      padding: 10px 0;
+    }
+
+    .my-dark {
+      background-color: #f5f5f5;
+    }
+
+    .footer {
+      background: #111;
+      font-size: 0.9em;
+      position: relative;
+      clear: both;
+    }
+    .my-white {
+      color: #ffffff;
+    }
+
+    body {
+      margin: 0;
+    }
+    #progress {
+      height: 2px;
+      background-color: #b91f1f;
+      transition: opacity 500ms linear;
+    }
+    #progress.done{
+      opacity: 0;
+    }
+  </style>
 </head>
 <body>
+<div id="progress"></div>
 <!--导航栏开始-->
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
+<nav class="navbar navbar-inverse my-nav">
+  <div class="container">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
@@ -20,45 +54,27 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Brand</a>
+      <a class="navbar-brand" href="http://www.oldboyedu.com/"><strong>OldBoy Edu</strong></a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
-        <li><a href="#">Link</a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-             aria-expanded="false">Dropdown <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">One more separated link</a></li>
-          </ul>
-        </li>
+        <li><a href="#">Python学院<span class="sr-only">(current)</span></a></li>
+        <li><a href="#">Linux学院</a></li>
+        <li><a href="http://luffy.oldboyedu.com">路飞学城</a></li>
       </ul>
-      <form class="navbar-form navbar-left">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
-        </div>
-        <button type="submit" class="btn btn-default">Submit</button>
-      </form>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Link</a></li>
+        <li><a href="#">好好学习</a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-             aria-expanded="false">Dropdown <span class="caret"></span></a>
+             aria-expanded="false">联系我们<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">哪吒</a></li>
-            <li><a id="i1" href="#">Egon</a></li>
-            <li><a class="c1" href="#">日天</a></li>
+            <li><a href="#">Rain</a></li>
+            <li><a href="#">Egon</a></li>
+            <li><a href="#">Yuan</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="#">Alex</a></li>
+            <li><a href="#">Q1mi</a></li>
           </ul>
         </li>
       </ul>
@@ -72,9 +88,10 @@
 
   <div class="jumbotron">
     <div id="j1" class="container">
-      <h1 class="c1">学厨师，去新东方。</h1>
-      <h1 class="c1">学Python，就来老男孩。</h1>
-      <p id="p1"><a class="btn btn-primary btn-lg" href="#" role="button">查看更多</a></p></div>
+      <h1 class="c1">沙河前端小王子</h1>
+      <h1 class="c1">带你学习jQuery</h1>
+      <p id="p1"><a class="btn btn-primary btn-lg" href="https://q1mi.github.io/Blog/2017/07/10/about_jQuery/"
+                    role="button">查看更多</a></p></div>
   </div>
   <hr>
   <div class="row">
@@ -91,8 +108,8 @@
         <tbody>
         <tr>
           <th>1</th>
-          <td>Egon</td>
-          <td>杠娘</td>
+          <td>Eva_J</td>
+          <td>茶道</td>
           <td>
             <button class="btn btn-warning">编辑</button>
             <button class="btn btn-danger">删除</button>
@@ -109,8 +126,8 @@
         </tr>
         <tr id="tr3">
           <th>3</th>
-          <td>八级哥</td>
-          <td>英语</td>
+          <td>Alex</td>
+          <td>吹牛逼</td>
           <td>
             <button class="btn btn-warning">编辑</button>
             <button class="btn btn-danger">删除</button>
@@ -188,19 +205,26 @@
             <div class="radio">
               <label>
                 <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-                我要上课玩手机
+                我的心中只有学习
               </label>
             </div>
             <div class="radio">
               <label>
                 <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-                我要上课好好听
+                学习真的太TM有意思了
               </label>
             </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
+
+  <hr>
+
+  <div>
+    <i class="fa fa-hand-pointer-o fa-lg fa-rotate-90" aria-hidden="true"></i>
+    <a class="btn btn-success" href="http://jquery.cuishifeng.cn/">jQuery中文API指南</a>
   </div>
 
   <hr>
@@ -219,8 +243,8 @@
         <li>找到本页面所有样式类中有<code>c1</code>的标签和所有样式类中有<code>btn</code>的标签</li>
         <p id="p2" class="divider"></p>
         <li>找到本页面中<code>form</code>标签中的所有<code>input</code>标签</li>
-        <li>找到本页面中<code>label</code>标签下的<code>input</code>子标签</li>
-        <li>找到本页面中紧挨着<code>label</code>标签的<code>input</code>标签</li>
+        <li>找到本页面中被包裹在<code>label</code>标签内的<code>input</code>标签</li>
+        <li>找到本页面中紧挨在<code>label</code>标签后面的<code>input</code>标签</li>
         <li>找到本页面中id为<code>p2</code>的标签后面所有和它同级的<code>li</code>标签</li>
         <p id="p3" class="divider"></p>
         <li>找到id值为<code>f1</code>的标签下面的第一个input标签</li>
@@ -230,9 +254,27 @@
       </ol>
     </div>
   </div>
+</div>
 
+<div class="my-dark my-padding">
+  <div class="container">
+    <div class="col-sm-8 my-center">
+      <p>写很少的代码，做很多的事。</p>
+      <h4>所以说</h4>
+      <p>学好jQuery真的很重要，学好jQuery真的很重要，学好jQuery真的很重要。</p>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <div class="row">
+    <div class="col-md-12 text-center">
+      <span class="my-white">©2017 沙河前端小王子</span>
+    </div>
+  </div>
 </div>
 
 <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
 </html>
