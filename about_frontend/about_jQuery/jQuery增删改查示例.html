@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="x-ua-compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jQuery表格增删改查示例</title>
+  <style>
+    .hide {
+      display: none;
+    }
+
+    /*遮罩层*/
+    .shade {
+      position: fixed;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      background-color: black;
+      opacity: 0.8;
+    }
+
+    .modal {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      height: 200px;
+      width: 400px;
+      margin-top: -100px;
+      margin-left: -200px;
+      background-color: white;
+    }
+  </style>
+</head>
+<body>
+
+<button id="add">新增</button>
+<table border="1">
+  <thead>
+  <tr>
+    <th>#</th>
+    <th>姓名</th>
+    <th>爱好</th>
+    <th>操作</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>1</td>
+    <td>Egon</td>
+    <td>杠娘</td>
+    <td>
+      <button class="edit-btn">编辑</button>
+      <button class="delete-btn">删除</button>
+    </td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>Alex</td>
+    <td>吹牛逼</td>
+    <td>
+      <button class="edit-btn">编辑</button>
+      <button class="delete-btn">删除</button>
+    </td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>苑局</td>
+    <td>日天</td>
+    <td>
+      <button class="edit-btn">编辑</button>
+      <button class="delete-btn">删除</button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<div id="myShade" class="shade hide"></div>
+<div id="myModal" class="modal hide">
+  <div>
+    <label for="name"></label>
+    <input type="text" id="modal-name">
+    <label for="habit"></label>
+    <input type="text" id="modal-habit">
+    <button id="modal-submit">提交</button>
+    <button>取消</button>
+  </div>
+</div>
+<script src="jquery-3.2.1.min.js"></script>
+<script>
+
+    // 新增
+  function add(name, habit) {
+    var trTmp = document.createElement("tr");
+    $(trTmp).append("<td>" + ($("tbody").children().length + 1) + "</td>");
+    $(trTmp).append("<td>" + name + "</td>");
+    $(trTmp).append("<td>" + habit + "</td>");
+
+    // 加按钮
+    $("tr:last").children().last().clone().appendTo(trTmp);
+    // 把newTr加到table中
+    $(trTmp).appendTo("tbody");
+    // 清空input
+    $("#myModal").find("input").val("");
+    hideModal();
+  }
+
+  $("table").on("click", ".edit-btn", function () {
+    // 添值
+    // 取值
+    var $tds = $(this).parent().parent().children();
+
+    var name = $tds.eq(1).text();
+    var habit = $tds.eq(2).text();
+    // 保存取到的数据
+    $("#myModal").data("$tds", $tds);
+    $("#modal-name").val(name);
+    $("#modal-habit").val(habit);
+
+    // 弹出模态框
+    showModal();
+  });
+
+
+  // 修改后点击编辑保存modal中的内容
+  $("#modal-submit").on("click", function () {
+    var name = $("#modal-name").val();
+    var habit = $("#modal-habit").val();
+
+    // 取到之前保存的那个$tds
+    var $tds = $("#myModal").data("$tds");
+
+    if ($tds !== undefined) {
+      // 更新他
+      $tds.eq(1).text(name);
+      $tds.eq(2).text(habit);
+
+      // 清空input
+      $("#myModal").find("input").val("");
+      hideModal();
+    } else {
+      add(name, habit);
+    }
+
+  });
+
+  // 删除
+    $("tbody").on("click", ".delete-btn", function () {
+
+      $(this).parent().parent().nextAll().each(function () {
+        console.log(this);
+        var num = $(this).children().first().text();
+        console.log(num);
+        $(this).children().first().text(num-1);
+      });
+      $(this).parent().parent().remove();
+    });
+
+
+
+  $("#add").on("click", function () {
+    showModal();
+  });
+
+  function showModal() {
+    $(".modal").removeClass("hide");
+    $(".shade").removeClass("hide");
+
+  }
+
+  function hideModal() {
+    $(".modal").addClass("hide");
+    $(".shade").addClass("hide");
+
+  }
+
+</script>
+</body>
+</html>

@@ -8,7 +8,6 @@
         allInput.parent().removeClass("has-error");
         allInput.next().text("");
         // 校验
-
         allInput.each(function () {
           if (jq(this).attr("required")) {
             if (jq(this).val().length === 0) {

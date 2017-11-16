@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="x-ua-compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>登录注册示例</title>
+  <style>
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+
+<form id="myForm">
+  <label for="name">姓名</label>
+  <input type="text" id="name">
+  <span class="error"></span>
+  <label for="passwd">密码</label>
+  <input type="password" id="passwd">
+  <span class="error"></span>
+  <input type="submit" id="modal-submit" value="登录">
+</form>
+
+<script src="jquery-3.2.1.min.js"></script>
+<script src="s7validate.js"></script>
+<script>
+  
+  
+  function f1() {
+    $("#myForm").find(":submit").on("click", function () {
+      var flag = true;
+      $("#myForm").find(":text, :password").each(function () {
+        var val = $(this).val();
+        if (val.length <=0 ){
+          var labelName = $(this).prev("label").text();
+          $(this).next("span").text(labelName + "不能为空");
+          flag = false;
+        }
+      });
+      return flag;
+    })
+  }
+
+  $(document).ready(function () {
+    f1();
+  });
+//  $("#modal-submit").on("click", function () {
+//    $("#myForm").check();
+//    return false;
+//  });
+
+</script>
+</body>
+</html>
