@@ -13,9 +13,22 @@
 <script src="../jquery-3.2.1.min.js"></script>
 <script src="extend1.js"></script>
 <script src="extend2.js"></script>
-
 <script>
-$.dalong("123");
+  $.extend({
+    "xyy": function (arg) {
+      console.log("小yueyue" + arg);
+    }
+  });
+
+  $.fn.extend({
+    "xff": function (arg) {
+      console.log("小芳芳" + arg);
+    }
+  })
+</script>
+<script>
+$.dalong1("123");
+$.dalong2("123");
 </script>
 </body>
 </html>

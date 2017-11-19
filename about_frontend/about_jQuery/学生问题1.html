@@ -10,5 +10,15 @@
 <div class="c1">001</div>
 <div class="c1">002</div>
 <div class="c1">003</div>
+
+<script>
+  var newTr = document.createElement("tr");
+  for (var i = 0;i<3;i++) {
+    var newTd = document.createElement("td");
+    newTd.innerText = i;
+    newTr.appendChild(newTd);
+    console.log(newTr.innerHTML);
+  }
+</script>
 </body>
 </html>
