@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="x-ua-compatible" content="IE=edge">
+
+  <title>没有viewport的自适应</title>
+  <style>
+    .c1 {
+      height:400px;
+      width: 400px;
+      background-color: red;
+    }
+
+    .c2 {
+      background-color: red;
+    }
+
+    @media screen and (max-width: 600px) {
+      .c2 {
+      background-color: green;
+    }
+    }
+  </style>
+</head>
+<body>
+
+<div class="c1 c2"></div>
+<img src="./Bootstrap_i1.png" alt="前女友">
+
+</body>
+</html>

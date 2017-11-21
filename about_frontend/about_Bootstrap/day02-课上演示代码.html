@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="x-ua-compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>day02课上演示</title>
+  <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container">
+  <!-- Split button -->
+  <div class="btn-group">
+    <button type="button" class="btn btn-danger">Action</button>
+    <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">
+      <span class="caret"></span>
+      <span class="sr-only">Toggle Dropdown</span>
+    </button>
+    <ul class="dropdown-menu">
+      <li><a href="#">Action</a></li>
+      <li><a href="#">Another action</a></li>
+      <li><a href="#">Something else here</a></li>
+      <li role="separator" class="divider"></li>
+      <li><a href="#">Separated link</a></li>
+    </ul>
+  </div>
+
+  <hr>
+
+<div class="row">
+  <div class="col-md-2">
+    <!--导航区开始-->
+    <ul class="nav nav-pills nav-stacked" role="tablist">
+      <li role="presentation" class="active"><a href="#home" role="tab" data-toggle="tab">主页</a></li>
+      <li role="presentation"><a href="#profile" role="tab" data-toggle="tab">简介</a></li>
+      <li role="presentation"><a href="#messages" role="tab" data-toggle="tab">消息</a></li>
+    </ul>
+    <!--导航区结束-->
+  </div>
+  <div class="col-10">
+    <!--面板区开始-->
+    <div class="tab-content">
+      <div role="tabpanel" class="tab-pane active" id="home">这里是主页的内容</div>
+      <div role="tabpanel" class="tab-pane" id="profile">这里是简介页面的内容</div>
+      <div role="tabpanel" class="tab-pane" id="messages">这里是消息页面的内容</div>
+    </div>
+    <!--面板区结束-->
+  </div>
+</div>
+</div>
+
+<script src="../about_jQuery/jquery-3.2.1.min.js"></script>
+<script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+</body>
+</html>
