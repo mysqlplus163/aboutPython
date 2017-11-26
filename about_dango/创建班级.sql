@@ -6,3 +6,9 @@ CREATE TABLE class(
 -- 新增班级
 
 insert into class(title) VALUE ("全栈4期");
+
+CREATE TABLE user(
+  id int auto_increment PRIMARY KEY,
+  name CHAR(10) NOT NULL,
+  habit CHAR(20) NOT NULL
+)engine=innodb DEFAULT charset=UTF8;
