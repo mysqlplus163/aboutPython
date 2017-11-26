@@ -1,11 +1,9 @@
 """mysite URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
-<<<<<<< HEAD
-    https://docs.djangoproject.com/en/1.10/topics/http/urls/
-=======
+
     https://docs.djangoproject.com/en/1.11/topics/http/urls/
->>>>>>> 4d8e22026e5388c256224a40b4173f3ca4f93392
+
 Examples:
 Function views
     1. Add an import:  from my_app import views
@@ -19,32 +17,16 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-<<<<<<< HEAD
-from django.shortcuts import render, redirect
+from . import views
 
 
-def login(request):
-    return render(request, "login.html")
-
-
-def index(request):
-    return render(request, "index.html")
 
 urlpatterns = [
     # url(r'^admin/', admin.site.urls),
-    url(r'^login/', login),
-    url(r'^index/', index),
-=======
-
-from django.shortcuts import HttpResponse, render, redirect
-
-
-def f1(request):
-    return HttpResponse("OK")
-
-
-urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r"^index/", f1)
->>>>>>> 4d8e22026e5388c256224a40b4173f3ca4f93392
+    url(r'^login/', views.login),
+    url(r'^index/', views.index),
+    url(r'^class_list/', views.class_list),
+    url(r'^add_class/', views.add_class),
+    url(r'^delete_class/', views.delete_class),
+    url(r'^edit_class/', views.edit_class),
 ]
