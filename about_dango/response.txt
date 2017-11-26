@@ -1,0 +1,7 @@
+HTTP/1.1 301 Moved Permanently
+Date: Thu, 23 Nov 2017 11:35:49 GMT
+Content-Type: text/html; charset=UTF-8
+Content-Length: 147
+Location: https://www.cnblogs.com/
+X-UA-Compatible: IE=10
+X-Frame-Options: SAMEORIGIN
