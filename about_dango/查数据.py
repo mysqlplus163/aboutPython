@@ -15,7 +15,7 @@ import pymysql
 
 
 def f1():
-    conn = pymysql.connect(host="127.0.0.1", port=3306, user="root", passwd="root1234", db="TEST1")
+    conn = pymysql.connect(host="127.0.0.1", port=3306, user="root", passwd="root1234", db="TEST1", charset="utf8")
     cursor = conn.cursor(cursor=pymysql.cursors.DictCursor)
     cursor.execute("select uid, name, department_id from userinfo")
     user_list = cursor.fetchall()
