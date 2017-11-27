@@ -1,0 +1,1 @@
+SELECT student.id, student.name, class.name AS class_name from student LEFT JOIN class ON student.class_id = class.id;

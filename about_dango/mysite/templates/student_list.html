@@ -56,9 +56,9 @@
     <div class="col-sm-3 col-md-2 sidebar">
       <div class="my-menu-item" href="#menu-son1" data-toggle="collapse"><a>学员管理 <span class="glyphicon glyphicon-menu-left pull-right"></span></a></div>
       <ul class="nav nav-sidebar collapse in" id="menu-son1">
-        <li class="active"><a href="/class_list/">班级管理</a></li>
+        <li><a href="/class_list/">班级管理</a></li>
         <li><a href="/teacher_list/">老师管理</a></li>
-        <li><a href="/student_list/">学生管理</a></li>
+        <li class="active"><a href="/student_list/">学生管理</a></li>
       </ul>
       <div class="my-menu-item" href="#menu-son2" data-toggle="collapse"><a>菜单二<span class="glyphicon glyphicon-menu-left pull-right"></span></a></div>
       <ul class="nav nav-sidebar collapse" id="menu-son2">
@@ -89,7 +89,7 @@
                 <input type="text" class="form-control" id="table-search" placeholder="搜索">
               </div>
               <button class="btn btn-primary">搜索</button>
-              <a type="button" class="btn btn-success pull-right" href="/add_class/">新页面添加</a>
+              <a type="button" class="btn btn-success pull-right" href="/add_student/">新页面添加</a>
               <button type="button" class="btn btn-success pull-right" data-toggle="modal" data-target="#myModal">模态框添加
               </button>
             </form>
@@ -101,26 +101,28 @@
             <thead>
             <tr>
               <th>#</th>
-              <th>班级名称</th>
+              <th>学生姓名</th>
+              <th>班级</th>
               <th>操作</th>
             </tr>
             </thead>
             <tbody>
-            {% for class in class_list %}
+            {% for student in students %}
 
             <tr>
-              <th scope="row">{{ class.id }}</th>
-              <td>{{ class.name }}</td>
+              <th scope="row">{{ student.id }}</th>
+              <td>{{ student.name }}</td>
+              <td>{{ student.class_name }}</td>
               <td class="text-center">
                 <a type="button" class="btn btn-sm btn-success" aria-label="Left Align">
                   <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>编辑
                 </a>
                 |
-                <a href="/edit_class/?class_id={{ class.id }}/" type="button" class="btn btn-sm btn-success" aria-label="Left Align">
+                <a href="/edit_student/?student_id={{ student.id }}/" type="button" class="btn btn-sm btn-success" aria-label="Left Align">
                   <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>新页面编辑
                 </a>
                 |
-                <a href="/delete_class/?class_id={{ class.id }}" type="button" class="btn btn-sm btn-danger" aria-label="Left Align">
+                <a href="/delete_student/?class_id={{ student.id }}" type="button" class="btn btn-sm btn-danger" aria-label="Left Align">
                   <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>删除
                 </a>
               </td>
@@ -161,13 +163,12 @@
         <h4 class="modal-title">Modal title</h4>
       </div>
       <div class="modal-body">
-        <form class="form-horizontal">
+        <form class="form-horizontal" action="/add_class/" method="post">
 
           <div class="form-group">
             <label for="inputclassname2" class="col-sm-2 control-label">班级名称</label>
             <div class="col-sm-10">
               <input type="text" class="form-control" id="inputclassname2" placeholder="班级名称" name="class_name">
-              <span id="modal-error" class="help-block"></span>
             </div>
           </div>
 
@@ -200,19 +201,7 @@
       }
     });
       $("#modal-submit").on("click", function () {
-        var className = $("#inputclassname2").val();
-        $.ajax({
-          url: "/modal_add_class/",
-          data: {"class_name": className},
-          type: "post",
-          success: function (data) {
-            if (data === "OK"){
-              location.href="/class_list/"
-            }else {
-              $("#modal-error").text(data).parent().parent().addClass("has-error");
-            }
-          }
-        })
+        $("#myModal form").submit();
       });
   });
 
