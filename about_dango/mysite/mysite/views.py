@@ -77,6 +77,14 @@ def edit_class(request):
         return render(request, "edit_class.html", {"class": class_record})
 
 
+def test(request):
+    data = [
+        {"age": 1},
+        {"age": 2},
+        {"age": 3}
+    ]
+    return render(request, "test.html", {"x": data, "y": "<h1>name</h1>"})
+
 def student_list(request):
     conn = pymysql.connect(host="127.0.0.1", port=3306, user="root", passwd="root1234", db="mysite", charset="utf8")
     cursor = conn.cursor(cursor=pymysql.cursors.DictCursor)

@@ -30,11 +30,14 @@ urlpatterns = [
     url(r'^delete_class/', views.delete_class),
     url(r'^edit_class/', views.edit_class),
 
+    url(r'^test/', views.test),
+
     url(r'^student_list/', views.student_list),
     url(r'^add_student/', views.add_student),
     url(r'^edit_student/', views.edit_student),
 
     url(r'^modal_add_class/', views.modal_add_class),
+
 
     url(r'^modal_edit_class/', views.modal_edit_class),
     url(r'^modal_delete_class/', views.modal_delete_class),
