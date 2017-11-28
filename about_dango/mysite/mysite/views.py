@@ -136,3 +136,21 @@ def modal_add_class(request):
             return HttpResponse("班级名称不能为空")
     else:
         return HttpResponse("不OK")
+
+
+import json
+def modal_edit_class(request):
+    if request.method == "POST":
+        class_id = request.POST.get("class_id")
+        class_name = request.POST.get("class_name")
+        if class_name:
+            modify("update class set name=%s where id=%s", [class_name, class_id])
+            ret = {"status": 0, "msg": None}
+        else:
+            ret = {"status": 1, "msg": "班级名称不能为空"}
+        return HttpResponse(json.dumps(ret))
+
+
+def modal_delete_class(request):
+    ret = {"status": 0, "msg": "删除成功"}
+    return HttpResponse(json.dumps(ret))
