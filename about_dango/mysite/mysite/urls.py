@@ -29,4 +29,5 @@ urlpatterns = [
     url(r'^add_class/', views.add_class),
     url(r'^delete_class/', views.delete_class),
     url(r'^edit_class/', views.edit_class),
+    url(r'^test/', views.test),
 ]

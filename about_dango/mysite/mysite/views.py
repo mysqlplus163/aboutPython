@@ -74,3 +74,12 @@ def edit_class(request):
         conn.close()
 
         return render(request, "edit_class.html", {"class": class_record})
+
+
+def test(request):
+    data = [
+        {"age": 1},
+        {"age": 2},
+        {"age": 3}
+    ]
+    return render(request, "test.html", {"x": data, "y": "<h1>name</h1>"})
