@@ -101,14 +101,14 @@
             <thead>
             <tr>
               <th>#</th>
-              <th>班级名称</th>
+              <th>老师</th>
               <th>操作</th>
             </tr>
             </thead>
             <tbody>
             {% for class in class_list %}
 
-            <tr id="class-{{ class.id }}">
+            <tr>
               <th scope="row">{{ class.id }}</th>
               <td>{{ class.name }}</td>
               <td class="text-center">
@@ -122,9 +122,6 @@
                 |
                 <a href="/delete_class/?class_id={{ class.id }}" type="button" class="btn btn-sm btn-danger" aria-label="Left Align">
                   <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>删除
-                </a>
-                <a type="button" class="btn btn-sm btn-danger swal-delete" aria-label="Left Align">
-                  <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>swal删除
                 </a>
               </td>
             </tr>
@@ -148,6 +145,7 @@
             </div>
           </div>
         </div>
+
       </div>
     </div>
   </div>
@@ -285,42 +283,6 @@
         }
       })
     });
-    
-    // swal删除
-    $("table .swal-delete").on("click", function () {
-      var classID = $(this).parent().parent().children().first().text();
-      swal({
-        title: "确定要删除这个班级吗？",
-        text: "删除后可就无法恢复了。",
-        type: "warning",
-        showCancelButton: true,
-        closeOnConfirm: false,
-        confirmButtonText: "是的，我要删除！",
-        confirmButtonColor: "#ec6c62",
-        cancelButtonText: "容我三思"
-      }, function (isConfirm) {
-        if (!isConfirm) return;
-           $.ajax({
-             type: "post",
-             url: "/modal_delete_class/",
-             data: {"class_id": classID},
-             success: function (data) {
-               var dataObj = $.parseJSON(data);
-               if (dataObj.status === 0) { //后端删除成功
-                 swal("删除成功", dataObj.msg, "success");
-                 console.log("class-"+classID);
-                 $("#class-"+classID).remove();
-               } else {
-                 swal("出错啦。。。", dataObj.msg, "error");  //后端删除失败
-               }
-             },
-             error: function () {  // ajax请求失败
-               swal("啊哦。。。", "服务器走丢了。。。", "error");
-             }
-           })
-        });
-    });
-
   });
 
 </script>
