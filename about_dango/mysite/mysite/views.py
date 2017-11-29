@@ -167,3 +167,99 @@ def modal_edit_class(request):
 def modal_delete_class(request):
     ret = {"status": 0, "msg": "删除成功"}
     return HttpResponse(json.dumps(ret))
+
+def magic(data):
+    tmp = {}
+    for i in data:
+        if i["id"] not in tmp:
+            i["class_list"] = [i["cname"], ]
+            tmp[i["id"]] = i
+        else:
+            tmp[i["id"]]["class_list"].append(i["cname"])
+    return list(tmp.values())
+
+def teacher_list(request):
+    if request.method == "POST":
+        pass
+    else:
+        teacher_list_o = get_list("select teacher.id, teacher.name, class.name as cname from teacher LEFT JOIN teacher2class on teacher.id = teacher2class.teacher_id LEFT JOIN class ON teacher2class.class_id = class.id")
+        teacher_list = magic(teacher_list_o)
+        return render(request, "teacher_list.html", {"teacher_list": teacher_list})
+
+
+from tools.sql_master import create, SQLManager
+def add_teacher(request):
+    if request.method == "POST":
+
+        class_list = request.POST.getlist("class_id")
+        teacher_name = request.POST.get("teacher_name")
+        # 创建老师
+        teacher_id = create("insert into teacher(name) VALUES (%s)", [teacher_name, ])
+        # 更新teacher2class表
+        # 多次链接，多次提交
+        # for i in class_list:
+        #     modify("insert into teacher2class(teacher_id, class_id) VALUES (%s, %s)", [teacher_id, i])
+        #
+        # # 一次链接，多次提交
+        # db = SQLManager()
+        # for i in class_list:
+        #     db.moddify("insert into teacher2class(teacher_id, class_id) VALUES (%s, %s)", [teacher_id, i])
+        # db.close()
+        #
+        # 一次链接，一次提交
+        data_list = []
+        for i in class_list:
+            tmp = [teacher_id, i]
+            data_list.append(tmp)
+
+        db = SQLManager()
+        db.multi_modify("insert into teacher2class(teacher_id, class_id) VALUES (%s, %s)", data_list)
+        db.close()
+        return redirect("/teacher_list/")
+
+
+    else:
+        class_list = get_list("select id, name from class")
+        return render(request, "add_teacher.html", {"class_list": class_list})
+
+
+def edit_teacher(request):
+
+    if request.method == "POST":
+        teacher_id = request.POST.get("teacher_id")
+        class_ids = request.POST.getlist("class_id")
+        # 更新
+        db = SQLManager()
+        teacher_class_ids = db.get_list("select class_id from teacher2class WHERE teacher_id=%s", [teacher_id, ])
+        old_class_ids = [i["class_id"] for i in teacher_class_ids]
+        # 粗暴更新
+        del_id_list = []
+        add_id_list = []
+        for i in old_class_ids:
+            del_id_list.append((teacher_id, i))
+        for j in class_ids:
+            add_id_list.append((teacher_id, j))
+        db.multi_modify("DELETE from teacher2class WHERE teacher_id=%s AND class_id=%s", del_id_list)
+        db.multi_modify("insert into teacher2class(teacher_id, class_id) VALUES (%s, %s)", add_id_list)
+        db.close()
+        return redirect("/teacher_list")
+
+    else:
+
+        teacher_id = request.GET.get("teacher_id")
+        # db = SQLManager()
+        # class_list = db.get_list("select id, name from class")
+        # teacher_info = db.get_list("SELECT teacher.id, teacher.name, teacher2class.class_id FROM teacher  LEFT JOIN teacher2class ON teacher.id = teacher2class.teacher_id WHERE teacher.id=%s;", [teacher_id])
+        # db.close()
+
+        with SQLManager() as db:
+            class_list = db.get_list("select id, name from class")
+            teacher_info = db.get_list("SELECT teacher.id, teacher.name, teacher2class.class_id FROM teacher  LEFT JOIN teacher2class ON teacher.id = teacher2class.teacher_id WHERE teacher.id=%s;", [teacher_id])
+
+        # print(db.get_list("select id, name from class"))
+        ret = teacher_info[0]
+        ret["class_ids"] = [ret["class_id"], ]
+        for i in teacher_info[1:]:
+            ret["class_ids"].append(i["class_id"])
+
+        return render(request, "edit_teacher.html", {"class_list": class_list, "teacher": ret})
