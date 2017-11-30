@@ -54,7 +54,7 @@ body {
   background-color: #3d3d3d;
   border-top: 1px solid #484848;
 }
-.my-menu-item:hover, .my-menu-item .active {
+.my-menu-item:hover, .my-menu-item.active {
   background-color: #27272B;
   cursor: pointer;
 }

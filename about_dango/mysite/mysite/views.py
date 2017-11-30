@@ -6,22 +6,41 @@
 
 from django.shortcuts import render, redirect, HttpResponse
 import pymysql
+from functools import wraps
+
+
+def check_login(func):
+    @wraps(func)
+    def inner(request, *args, **kwargs):
+        print(request.get_signed_cookie("login", salt="S7", default=None))
+        print(request.get_signed_cookie("login", salt="S7", default=None) == "yes")
+        if request.get_signed_cookie("login", salt="S7", default=None) == "yes":
+            print("已经登录的用户...")
+            return func(request, *args, **kwargs)
+        else:
+            print("没有登录的用户，跳转刚到登录页面...")
+            return redirect("/login/")
+    return inner
 
 
 def login(request):
     if request.method == "POST":
         username = request.POST.get("username")
         passwd = request.POST.get("password")
+        print(username, passwd)
         if username == "alex" and passwd == "dashabi":
-            return redirect("/class_list/")
-    else:
-        return render(request, "login.html")
+            print("登陆成功...")
+            response = redirect("/class_list/")
+            response.set_signed_cookie("login", "yes", salt="S7")
+            return response
+    return render(request, "login.html")
 
 
 def index(request):
     return render(request, "index.html")
 
 
+@check_login
 def class_list(request):
     conn = pymysql.connect(host="127.0.0.1", port=3306, user="root", passwd="root1234", db="mysite", charset="utf8")
     cursor = conn.cursor(cursor=pymysql.cursors.DictCursor)
@@ -32,7 +51,9 @@ def class_list(request):
     return render(request, "class_list.html", {"class_list": class_list})
 
 
+@check_login
 def add_class(request):
+    print(request.COOKIES)
     if request.method == "POST":
         new_class_name = request.POST.get("class_name")
         conn = pymysql.connect(host="127.0.0.1", port=3306, user="root", passwd="root1234", db="mysite", charset="utf8")
@@ -137,7 +158,7 @@ def edit_student(request):
         student = get_one("select id, name, class_id from student where id=%s", [student_id, ])
         return render(request, "edit_student.html", {"class_list": class_list, "student": student})
 
-
+@check_login
 def modal_add_class(request):
     if request.method == "POST":
         class_name = request.POST.get("class_name")
@@ -263,3 +284,9 @@ def edit_teacher(request):
             ret["class_ids"].append(i["class_id"])
 
         return render(request, "edit_teacher.html", {"class_list": class_list, "teacher": ret})
+
+
+def logout(request):
+    rep = redirect("/login/")
+    rep.delete_cookie("login")
+    return rep

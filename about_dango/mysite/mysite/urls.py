@@ -17,7 +17,7 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from . import views
+from . import views, test_views
 
 
 
@@ -45,5 +45,10 @@ urlpatterns = [
     url(r'^teacher_list/', views.teacher_list),
     url(r'^add_teacher/', views.add_teacher),
     url(r'^edit_teacher/', views.edit_teacher),
+
+    url(r'^xxx/', test_views.base_test),
+    url(r'^l1/', test_views.l1),
+    url(r'^l2/', test_views.l2),
+    url(r'^logout/', views.logout),
 
 ]
