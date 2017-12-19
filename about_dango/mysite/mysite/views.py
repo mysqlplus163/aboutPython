@@ -12,6 +12,9 @@ from functools import wraps
 def check_login(func):
     @wraps(func)
     def inner(request, *args, **kwargs):
+        next_url = request.get_full_path()
+        print(next_url)
+        print("-" * 100)
         print(request.get_signed_cookie("login", salt="S7", default=None))
         print(request.get_signed_cookie("login", salt="S7", default=None) == "yes")
         if request.get_signed_cookie("login", salt="S7", default=None) == "yes":
@@ -19,7 +22,7 @@ def check_login(func):
             return func(request, *args, **kwargs)
         else:
             print("没有登录的用户，跳转刚到登录页面...")
-            return redirect("/login/")
+            return redirect("/login/?nexturl={}".format(next_url))
     return inner
 
 
@@ -30,7 +33,13 @@ def login(request):
         print(username, passwd)
         if username == "alex" and passwd == "dashabi":
             print("登陆成功...")
-            response = redirect("/class_list/")
+            next_url = request.GET.get("nexturl")
+            print(next_url)
+            print("=" * 80)
+            if next_url:
+                response = redirect(next_url)
+            else:
+                response = redirect("/class_list/")
             response.set_signed_cookie("login", "yes", salt="S7")
             return response
     return render(request, "login.html")
@@ -111,6 +120,7 @@ def test(request):
         ]
         return render(request, "test.html", {"x": data, "y": "<h1>name</h1>"})
 
+@check_login
 def student_list(request):
     conn = pymysql.connect(host="127.0.0.1", port=3306, user="root", passwd="root1234", db="mysite", charset="utf8")
     cursor = conn.cursor(cursor=pymysql.cursors.DictCursor)

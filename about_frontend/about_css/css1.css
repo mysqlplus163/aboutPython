@@ -1,0 +1,48 @@
+div {
+  background-color: green;
+  color: red;
+}
+
+/**
+多行
+注释
+**/
+
+/*单行注释*/
+
+
+/*用于选取带有指定属性的元素。*/
+p[title] {
+  color: red;
+}
+/*用于选取带有指定属性和值的元素。*/
+p[title="213"] {
+  color: green;
+}
+
+/*上面常用*/
+
+/*用于选取属性值包含指定值的每个元素*/
+div[class~="c2"] {
+  color: red;
+}
+/*用于选取带有以指定值开头的属性值的元素，该值必须是整个单词。*/
+div[class|="c2"] {
+  color: red;
+}
+/*匹配属性值以指定值开头的每个元素*/
+div[class^="my"] {
+  color: red;
+}
+/*匹配属性值以指定值结尾的每个元素*/
+div[class$="s"] {
+  color: red;
+}
+/*匹配属性值以指定值结尾的每个元素*/
+div[class$="s"] {
+  color: red;
+}
+/*匹配属性值包含指定值的每个元素*/
+div[class*="sb"] {
+  color: red;
+}

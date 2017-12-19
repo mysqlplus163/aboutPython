@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="x-ua-compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>css样式优先级</title>
+
+  <style>
+    div {
+      background-color: red;
+      color: white;
+    }
+  </style>
+  <style>
+    #i1 {
+      background-color: red;
+    }
+    .c1 {
+      font-size: 14px;
+    }
+
+  </style>
+  <link rel="stylesheet" href="css1.css">
+</head>
+<body>
+
+<div>1</div>
+<div>2</div>
+<div>3</div>
+
+
+<div>
+  <h1>海燕</h1>
+  <p>在苍茫的大海上，</p>
+  <p>狂风卷集着乌云。</p>
+  <p>在乌云和大海之间，</p>
+  <p>海燕像黑色的闪电，</p>
+  <p>在高傲地飞翔。</p>
+</div>
+
+
+<b>加粗</b>
+<i>斜体</i>
+<u>下划线</u>
+<s>删除</s>
+
+<p>段落标签</p>
+
+<h1>标题1</h1>
+<h2>标题2</h2>
+<h3>标题3</h3>
+<h4>标题4</h4>
+<h5>标题5</h5>
+<h6>标题6</h6>
+
+<!--换行-->
+<br>
+
+<!--水平线-->
+<hr>
+
+<ul type="disc">
+  <li>第一项</li>
+  <li>第二项</li>
+</ul>
+
+<ol type="1" start="2">
+  <li>第一项</li>
+  <li>第二项</li>
+</ol>
+
+<dl>
+  <dt>标题1</dt>
+  <dd>内容1</dd>
+  <dt>标题2</dt>
+  <dd>内容1</dd>
+  <dd>内容2</dd>
+</dl>
+
+
+<table>
+  <thead>
+  <tr>
+    <th>序号</th>
+    <th>姓名</th>
+    <th>爱好</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>1</td>
+    <td>Egon</td>
+    <td>杠娘</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>Yuan</td>
+    <td>日天</td>
+  </tr>
+  </tbody>
+</table>
+
+
+<form action="" method="post">
+  <select name="city" id="city">
+    <option value="1">北京</option>
+    <option selected="selected" value="2">上海</option>
+    <option value="3">广州</option>
+    <option value="4">深圳</option>
+  </select>
+</form>
+
+<form action="">
+<textarea name="memo" id="memo" cols="30" rows="10">
+  默认内容
+</textarea>
+</form>
+
+<form action="">
+  <label for="username">用户名</label>
+  <input type="text" id="username" name="username">
+</form>
+
+<p style="color: red">Hello world.</p>
+</body>
+</html>
+
