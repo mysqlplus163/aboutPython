@@ -15,6 +15,11 @@ def index(request):
     pass
 
 
+def upload(request):
+    if request.method == "POST":
+        obj = request.FILES
+
+
 # class BooksListView(View):
 #     def get(self, request):
 #
