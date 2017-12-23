@@ -17,6 +17,7 @@ from django.conf.urls import url
 from django.contrib import admin
 from app01 import views
 from app_demo.views import edit_class, class_list, add_class, delete_class, student_list, add_student, edit_student, modal_add_class
+from app01 import views
 
 urlpatterns = [
     url(r'^index/', views.index),
@@ -30,4 +31,5 @@ urlpatterns = [
     url(r'^add_student/', add_student),
     url(r'^edit_student/', edit_student),
     url(r'^modal_add_class/', modal_add_class),
+    url(r'^test/', views.my_test_view),
 ]

@@ -18,3 +18,7 @@ class PublisherAdmin(admin.ModelAdmin):
 @admin.register(models.Author)
 class AuthorAdmin(admin.ModelAdmin):
     pass
+
+@admin.register(models.MyTest)
+class MyTestAdmin(admin.ModelAdmin):
+    pass

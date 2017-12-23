@@ -16,7 +16,9 @@ while True:
     conn, addr = sk.accept()
     data = conn.recv(8096)
     conn.send(b"HTTP/1.1 200 OK\r\n\r\n")
-    conn.secd(b"<h1>Hello world!</h1>")
+    with open("html.txt", "rb") as f:
+        data1 = f.read()
+    conn.send(data1)
     conn.close()
 
 

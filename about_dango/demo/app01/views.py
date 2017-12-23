@@ -50,3 +50,8 @@ class BooksListView(View):
         from django.http import JsonResponse
         import json
         return JsonResponse(json.loads(data), safe=False)
+
+
+def my_test_view(request):
+    data = models.MyTest.objects.all()
+    return render(request, "mytest.html", {"data": data})

@@ -43,3 +43,19 @@ class Author(models.Model):
     class Meta:
         verbose_name = "作者"
         verbose_name_plural = verbose_name
+
+
+class MyTest(models.Model):
+    HRBP_audit_choice = (
+        (1, "确认"),
+        (2, "未确认")
+    )
+    HRBP_type_id = models.IntegerField(choices=HRBP_audit_choice, default=1)
+    
+    def __str__(self):
+        return self.get_HRBP_type_id_display()
+        
+    class Meta:
+        verbose_name = "test"
+        verbose_name_plural = verbose_name
+
