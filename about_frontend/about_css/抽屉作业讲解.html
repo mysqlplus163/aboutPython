@@ -11,6 +11,12 @@
       margin: 0;
     }
 
+    .clearfix:after {
+      content: "";
+      display: block;
+      clear: both;
+    }
+
     body {
       background-color: #eeeeee;
     }
@@ -20,11 +26,12 @@
       height: 45px;
       background-color: #204F98;
     }
+
     .head-content {
       width: 960px;
       margin: 0 auto;
     }
-    
+
     .logo {
       background-image: url("http://dig.chouti.com/images/logo.png");
       width: 121px;
@@ -32,7 +39,8 @@
       margin-top: 11px;
       float: left;
     }
-    .menu li{
+
+    .menu li {
       float: left;
       color: #b3b3c3;
       line-height: 45px;
@@ -49,22 +57,114 @@
       width: 960px;
       height: 1000px;
       margin: 0 auto;
+      padding: 5px 15px;
       background-color: white;
     }
 
     .content-left {
       width: 630px;
       height: 1000px;
-      background-color: green;
       float: left;
     }
 
     .content-right {
       width: 300px;
       height: 1000px;
-      background-color: deeppink;
       float: right;
     }
+
+    /*页面主体部分上菜单*/
+    .top {
+      margin-top: 15px;
+      border-bottom: 1px solid #ccdcef;
+      padding-bottom: 10px;
+    }
+
+    .top-category {
+      float: left;
+    }
+
+    .top-category > a {
+      display: inline-block;
+      width: 60px;
+      height: 26px;
+      line-height: 26px;
+      text-align: center;
+      text-decoration: none;
+      background: url("http://dig.chouti.com/images/tip.png") no-repeat 0 0;
+      background-position: 0 -299px;
+    }
+
+    .top-new {
+      background-color: #84a42b;
+      border: 1px solid #8aab30;
+      color: #fff;
+      display: inline-block;
+      height: 30px;
+      line-height: 30px;
+      text-align: center;
+      width: 134px;
+      float: right;
+      font-size: 14px;
+    }
+
+    .content-list > .item {
+      padding-top: 15px;
+      border-bottom: 1px solid #ccdcef;
+    }
+
+    .part2 {
+      padding-top: 15px;
+      margin-bottom: 15px;
+    }
+
+    .part2>a {
+      display: inline-block;
+      min-width: 54px;
+    }
+    .news-pic {
+      float: right;
+      margin-left: 10px;
+      padding-bottom: 5px;
+    }
+
+    .news-pic > img {
+      width: 60px;
+      height: 60px;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      padding: 1px;
+      vertical-align: top;
+      display: inline;
+    }
+
+    .icons {
+      display: inline-block;
+      height: 18px;
+      width: 18px;
+      background: url("http://dig.chouti.com/images/icon_18_118.png?v=2.13") no-repeat 0 0;
+      vertical-align: middle;
+    }
+
+    .dig {
+      background-position: 0, 0;
+    }
+    .item b {
+      margin-left: 5px;
+    }
+    
+    .part2 .share > a {
+      display: inline-block;
+      width: 17px;
+      height: 14px;
+      background: url("http://dig.chouti.com/images/share_icon.png?v=2.15") no-repeat 0 0;
+    }
+
+    .weibo {
+      background-position: 0 -90px;
+    }
+
+
   </style>
 </head>
 <body>
@@ -91,7 +191,191 @@
   <div class="main-content">
     <!--左边开始-->
     <div class="content-left">
-      <div class="top">
+      <div class="top clearfix">
+        <div class="top-category">
+          <a href="">最热</a>
+          <a href="">发现</a>
+          <a href="">人类</a>
+        </div>
+        <div class="top-sort"></div>
+        <a class="top-new" href="">+发布</a>
+      </div>
+      <div class="content-list">
+        <div class="item">
+          <div class="news-pic">
+            <img src="24.jpg" alt="抽屉新热榜">
+          </div>
+          <div class="news-content">
+            <div class="part1"><a href="">这里是标题</a></div>
+            <div class="part2">
+              <a href=""><span class="icons dig"></span><b>6</b></a>
+              <a href=""><span class="icons dig"></span><b>6</b></a>
+              <a href=""><span class="icons dig"></span><b>私藏</b></a>
+              <a href=""><span class="icons dig"></span><b>Egon</b></a>
+              <span>25分钟前入榜</span>
+              <span class="share">
+                <i>分享到</i>
+                <a href="" class="weibo"></a>
+                <a href="" class="weibo"></a>
+                <a href="" class="weibo"></a>
+                <a href="" class="weibo"></a>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <div class="news-pic">
+            <img src="24.jpg" alt="抽屉新热榜">
+          </div>
+          <div class="news-content">
+            <div class="part1"><a href="">这里是标题</a></div>
+            <div class="part2">
+              <a href=""><span class="icons dig"></span><b>6</b></a>
+              <a href=""><span class="icons dig"></span><b>6</b></a>
+              <a href=""><span class="icons dig"></span><b>私藏</b></a>
+              <a href=""><span class="icons dig"></span><b>Egon</b></a>
+              <span>25分钟前入榜</span>
+              <span class="share">
+                <i>分享到</i>
+                <a href="" class="weibo"></a>
+                <a href="" class="weibo"></a>
+                <a href="" class="weibo"></a>
+                <a href="" class="weibo"></a>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <div class="news-pic">
+            <img src="24.jpg" alt="抽屉新热榜">
+          </div>
+          <div class="news-content">
+            <div class="part1"><a href="">这里是标题</a></div>
+            <div class="part2">
+              <a href=""><span class="icons dig"></span><b>6</b></a>
+              <a href=""><span class="icons dig"></span><b>6</b></a>
+              <a href=""><span class="icons dig"></span><b>私藏</b></a>
+              <a href=""><span class="icons dig"></span><b>Egon</b></a>
+              <span>25分钟前入榜</span>
+              <span class="share">
+                <i>分享到</i>
+                <a href="" class="weibo"></a>
+                <a href="" class="weibo"></a>
+                <a href="" class="weibo"></a>
+                <a href="" class="weibo"></a>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <div class="news-pic">
+            <img src="24.jpg" alt="抽屉新热榜">
+          </div>
+          <div class="news-content">
+            <div class="part1"><a href="">这里是标题</a></div>
+            <div class="part2">
+              <a href=""><span class="icons dig"></span><b>6</b></a>
+              <a href=""><span class="icons dig"></span><b>6</b></a>
+              <a href=""><span class="icons dig"></span><b>私藏</b></a>
+              <a href=""><span class="icons dig"></span><b>Egon</b></a>
+              <span>25分钟前入榜</span>
+              <span class="share">
+                <i>分享到</i>
+                <a href="" class="weibo"></a>
+                <a href="" class="weibo"></a>
+                <a href="" class="weibo"></a>
+                <a href="" class="weibo"></a>
+              </span>
+            </div>
+          </div>
+        </div><div class="item">
+          <div class="news-pic">
+            <img src="24.jpg" alt="抽屉新热榜">
+          </div>
+          <div class="news-content">
+            <div class="part1"><a href="">这里是标题</a></div>
+            <div class="part2">
+              <a href=""><span class="icons dig"></span><b>6</b></a>
+              <a href=""><span class="icons dig"></span><b>6</b></a>
+              <a href=""><span class="icons dig"></span><b>私藏</b></a>
+              <a href=""><span class="icons dig"></span><b>Egon</b></a>
+              <span>25分钟前入榜</span>
+              <span class="share">
+                <i>分享到</i>
+                <a href="" class="weibo"></a>
+                <a href="" class="weibo"></a>
+                <a href="" class="weibo"></a>
+                <a href="" class="weibo"></a>
+              </span>
+            </div>
+          </div>
+        </div><div class="item">
+          <div class="news-pic">
+            <img src="24.jpg" alt="抽屉新热榜">
+          </div>
+          <div class="news-content">
+            <div class="part1"><a href="">这里是标题</a></div>
+            <div class="part2">
+              <a href=""><span class="icons dig"></span><b>6</b></a>
+              <a href=""><span class="icons dig"></span><b>6</b></a>
+              <a href=""><span class="icons dig"></span><b>私藏</b></a>
+              <a href=""><span class="icons dig"></span><b>Egon</b></a>
+              <span>25分钟前入榜</span>
+              <span class="share">
+                <i>分享到</i>
+                <a href="" class="weibo"></a>
+                <a href="" class="weibo"></a>
+                <a href="" class="weibo"></a>
+                <a href="" class="weibo"></a>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <div class="news-pic">
+            <img src="24.jpg" alt="抽屉新热榜">
+          </div>
+          <div class="news-content">
+            <div class="part1"><a href="">这里是标题</a></div>
+            <div class="part2">
+              <a href=""><span class="icons dig"></span><b>6</b></a>
+              <a href=""><span class="icons dig"></span><b>6</b></a>
+              <a href=""><span class="icons dig"></span><b>私藏</b></a>
+              <a href=""><span class="icons dig"></span><b>Egon</b></a>
+              <span>25分钟前入榜</span>
+              <span class="share">
+                <i>分享到</i>
+                <a href="" class="weibo"></a>
+                <a href="" class="weibo"></a>
+                <a href="" class="weibo"></a>
+                <a href="" class="weibo"></a>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <div class="news-pic">
+            <img src="24.jpg" alt="抽屉新热榜">
+          </div>
+          <div class="news-content">
+            <div class="part1"><a href="">这里是标题</a></div>
+            <div class="part2">
+              <a href=""><span class="icons dig"></span><b>6</b></a>
+              <a href=""><span class="icons dig"></span><b>6</b></a>
+              <a href=""><span class="icons dig"></span><b>私藏</b></a>
+              <a href=""><span class="icons dig"></span><b>Egon</b></a>
+              <span>25分钟前入榜</span>
+              <span class="share">
+                <i>分享到</i>
+                <a href="" class="weibo"></a>
+                <a href="" class="weibo"></a>
+                <a href="" class="weibo"></a>
+                <a href="" class="weibo"></a>
+              </span>
+            </div>
+          </div>
+        </div>
+
 
       </div>
     </div>

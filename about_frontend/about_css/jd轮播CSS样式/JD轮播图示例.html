@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="x-ua-compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>JD轮播图示例</title>
+
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+      body {
+        background-color: black;
+      }
+    .jd {
+      position: relative;
+      height: 340px;
+      width: 790px;
+    }
+
+    .jd>ul>li {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    .dot {
+      height: 20px;
+      width: 200px;
+      /*给付标签设置透明度不影响子标签*/
+      background-color: rgba(255, 255, 255, 0.3);
+
+      position: absolute;
+      left: 50%;
+      bottom: 20px;
+      border-radius: 12px;
+      margin-left: -100px;
+    }
+    .dot>span {
+      display: inline-block;
+      height: 12px;
+      width: 12px;
+      border-radius: 12px;
+      background-color: white;
+    }
+    .dot>span:hover {
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+
+<div class="jd">
+  <ul>
+    <li><a href=""></a><img src="https://img11.360buyimg.com/da/jfs/t5464/106/472798610/142359/66551a05/58ffffc8Naea1f2a2.jpg" alt=""></li>
+    <li><a href=""></a><img src="https://img12.360buyimg.com/da/jfs/t15091/49/810001412/97115/a65e3b2/5a38e55cN7bd3a980.jpg" alt=""></li>
+    <li><a href=""></a><img src="https://img1.360buyimg.com/da/jfs/t14668/328/824928381/197311/e5166279/5a3a0cbeN4a995837.jpg" alt=""></li>
+    <li><a href=""></a><img src="https://img12.360buyimg.com/babel/jfs/t12397/134/2419796451/137730/3f902847/5a3b746aNfb29ec9c.jpg" alt=""></li>
+  </ul>
+  <div class="dot">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+</body>
+</html>

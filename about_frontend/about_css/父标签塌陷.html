@@ -26,12 +26,18 @@
       height: 50px;
       float: left;
     }
-.clearfix:after {
-  content: "";
-  display: block;
-  clear: both;
-}
+    .clearfix:after {
+      content: "";
+      display: block;
+      clear: both;
+    }
     p:after {
+      content: "p:after";
+      display: inline-block;
+      color: red;
+      font-weight: bold;
+    }
+    .cc:after {
       content: "p:after";
       display: inline-block;
       color: red;
@@ -45,5 +51,7 @@
   <div class="c2"></div>
 </div>
 <p>哈哈</p>
+
+<div class="cc"></div>
 </body>
 </html>
