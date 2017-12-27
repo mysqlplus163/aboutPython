@@ -11,3 +11,7 @@ for (var i=0;i<a.length;i++) {
 /*
 * 多行注释
 */
+
+for (var i=0;i<10;i++) {
+  console.log(i);
+}
