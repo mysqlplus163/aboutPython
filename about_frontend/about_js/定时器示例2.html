@@ -6,17 +6,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Title</title>
   <script>
+    var intervalId;
+
     function f() {
       var timeStr = (new Date()).toLocaleString();
-      var h1 = document.getElementsByTagName("h1")[0];
-      h1.innerText = timeStr;
+      var inputEle = document.getElementById("i1");
+      inputEle.value = timeStr;
     }
 
-    var timmer = setInterval(f, 1000);
+    function start() {
+      f();
+      if (intervalId === undefined) {
+        intervalId = setInterval(f, 1000);
+      }
+    }
+    function end() {
+      clearInterval(intervalId);
+      intervalId = undefined;
+    }
+
   </script>
 </head>
 <body>
 
-<h1></h1>
+<input type="text" id="i1">
+<input type="button" value="开始" id="start" onclick="start();">
+<input type="button" value="结束" id="end" onclick="end();">
 </body>
 </html>
