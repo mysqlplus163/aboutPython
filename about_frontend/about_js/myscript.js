@@ -144,3 +144,7 @@ location.href   // 获取URL
 location.href="URL"; // 重定向
 location.reload(); // 重新加载页面
 location="https://www.sogou.com";  // 跳转到
+
+for (var i=0;i<10;i++) {
+  console.log(i);
+}

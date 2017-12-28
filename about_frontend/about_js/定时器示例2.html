@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="x-ua-compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Title</title>
+  <script>
+    function f() {
+      var timeStr = (new Date()).toLocaleString();
+      var h1 = document.getElementsByTagName("h1")[0];
+      h1.innerText = timeStr;
+    }
+
+    var timmer = setInterval(f, 1000);
+  </script>
+</head>
+<body>
+
+<h1></h1>
+</body>
+</html>
