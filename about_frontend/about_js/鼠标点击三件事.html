@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="x-ua-compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>鼠标点击三件事</title>
+  <style>
+    .c1 {
+      height: 300px;
+      width: 300px;
+      background-color: red;
+    }
+  </style>
+
+  <script>
+    function md(ths) {
+      ths.style.backgroundColor = "blue";
+      ths.innerText = "你按下了鼠标左键"
+    }
+
+    function mu(ths) {
+      ths.style.backgroundColor = "red";
+      ths.innerText = "我是一个div"
+    }
+  </script>
+</head>
+<body>
+
+<div class="c1" onmousedown="md(this);" onmouseup="mu(this);">我是一个div</div>
+</body>
+</html>

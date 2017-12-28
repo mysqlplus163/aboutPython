@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="x-ua-compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>mouseout和mouseleave</title>
+  <style>
+    body {
+      margin: 0
+    }
+
+    li {
+      display: inline-block;
+      padding: 10px 20px;
+      list-style: none;
+      cursor: pointer;
+    }
+
+    li:hover {
+      background-color: #ccc
+    }
+
+    ul {
+      background: #eee;
+      display: inline-block;
+      width: 100%;
+      margin: 0px;
+    }
+
+    #nav {
+      background: transparent;
+      padding-bottom: 10px;
+    }
+
+    /*一般不要用id来写样式，我只是写个demo所以这些细节就随便一些*/
+    b {
+      margin: 0 20px;
+    }
+
+    .show {
+      margin: 0px;
+      transition: margin 0.2s;
+    }
+
+    .hide {
+      margin-top: -40px;
+      transition: margin 0.2s;
+    }
+
+  </style>
+</head>
+<body>
+<section id="contain">
+  <nav id="nav" class="hide">
+    <ul>
+      <li>标题1</li>
+      <li>标题2</li>
+      <li>标题3</li>
+    </ul>
+  </nav>
+</section>
+<script>
+  var contain = document.getElementById("contain");
+  var nav = document.getElementById("nav");
+  contain.onmouseover = function (e) {
+    if (e.target.tagName == "NAV") {
+      if (nav.getAttribute("class") === "hide") {
+        nav.setAttribute("class", "show");
+      }
+    }
+  };
+  //如果使用mouseout，移到li标签就会触发nav的mouseout事件
+  contain.onmouseleave = function (e) {
+    if (e.target.tagName == "NAV") {
+      if (nav.getAttribute("class") === "show") {
+        nav.setAttribute("class", "hide");
+      }
+    }
+  }
+
+</script>
+</body>
+</html>

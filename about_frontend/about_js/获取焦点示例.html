@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="x-ua-compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Title</title>
+</head>
+<body>
+<input id="i1" type="text" value="请输入用户名" onblur="Blurs()" onfocus="Focus()">
+
+
+<script>
+
+function Focus(){
+
+    var input=document.getElementById("i1");
+    if (input.value==="请输入用户名"){
+        input.value="";
+    }
+
+};
+
+function Blurs(){
+    var ele=document.getElementById("i1");
+    var val=ele.value;
+    if(!val.trim()){
+        ele.value="请输入用户名";
+    }
+}
+
+</script>
+</body>
+</html>

@@ -7,41 +7,44 @@
   <title>浮动和清除浮动示例</title>
   <style>
     .c1 {
-      height: 50px;
-      width: 50px;
+      height: 100px;
+      width: 100px;
       background-color: red;
+      float: left;
     }
 
     .c2 {
-      height: 100px;
-      width: 100px;
+      height: 200px;
+      width: 200px;
       background-color: rgb(0, 255, 0);
-      clear: both;
     }
 
     .c3 {
-      height: 150px;
-      width: 150px;
+      height: 100px;
+      width: 100px;
       background-color: rgb(0, 0, 255);
+      display: inline-block;
     }
 
-    .c1,
-    .c2,
-    .c3{
-      float: left;
-    }
-    .clearfix:after {
-      content: "";
-      display: block;
-      clear: both;
-    }
+    /*.c1,*/
+    /*.c2,*/
+    /*.c3{*/
+
+    /*}*/
+    /*.clearfix:after {*/
+      /*content: "";*/
+      /*display: block;*/
+      /*clear: both;*/
+    /*}*/
 
   </style>
 </head>
 <body>
 
-<div class="c1">c1</div>
-<div class="c2">c2</div>
-<div class="c3">c3</div>
+<div style="float: left">
+  <div class="c1">c1</div>
+  <div class="c2">c2</div>
+  <div class="c3">c3</div>
+</div>
 </body>
 </html>

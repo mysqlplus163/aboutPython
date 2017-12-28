@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="x-ua-compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>onselect事件</title>
+
+</head>
+<body>
+
+<input type="text" id="i1" value="ssadasd">
+
+<textarea name="" id="i2" cols="30" rows="10">
+  ssadasd
+</textarea>
+
+<label for="" id="i3">asasaada</label>
+  <script>
+    var i = document.getElementById("i1");
+    i.onselect = function () {
+      alert("lalala");
+    };
+     var i2 = document.getElementById("i2");
+    i2.onselect = function () {
+      alert("lalala");
+    };
+      var i3 = document.getElementById("i3");
+    i3.onselect = function () {
+      alert("lalala");
+    }
+  </script>
+</body>
+</html>
