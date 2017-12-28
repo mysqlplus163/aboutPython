@@ -23,8 +23,8 @@
 <script>
   var ulEle = document.getElementById("i1");
   ulEle.onclick=function (evt) {
-    var evt = evt || window.event;
-    var target = evt.target || evt.srcElement;
+    var e = evt || window.event;
+    var target = e.target || e.srcElement;
     console.log(target);
     if (target.classList.contains("c1")) {
       alert("111");
