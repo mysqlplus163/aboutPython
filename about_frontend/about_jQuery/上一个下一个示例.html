@@ -4,9 +4,64 @@
   <meta charset="UTF-8">
   <meta http-equiv="x-ua-compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>$Title$</title>
+  <title>上一个下一个示例</title>
 </head>
 <body>
-$END$
+
+<table border="1">
+  <thead>
+  <tr>
+    <th>#</th>
+    <th>姓名</th>
+    <th>爱好</th>
+    <th>操作</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>1</td>
+    <td>Egon</td>
+    <td>喊麦</td>
+    <td>
+      <input class="edit" type="button" value="编辑">
+      <input id="d1" class="delete" type="button" value="删除">
+    </td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>Alex</td>
+    <td>烫头</td>
+    <td>
+      <input class="edit" type="button" value="编辑">
+      <input class="delete" type="button" value="删除">
+    </td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>Yuan</td>
+    <td>日天</td>
+    <td>
+      <input class="edit" type="button" value="编辑">
+      <input class="delete" type="button" value="删除">
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<ul>
+  <li>111</li>
+  <li id="li2">222</li>
+  <li>333</li>
+  <li>444</li>
+  <li id="li5">555</li>
+</ul>
+
+<script src="jquery-3.2.1.min.js"></script>
+<script>
+    // prev
+  console.log($("#li5").prev().html());
+  console.log($("#li5").prevAll());
+  console.log($("#li5").prevUntil("#li2"));
+</script>
 </body>
 </html>
