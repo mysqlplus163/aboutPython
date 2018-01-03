@@ -48,19 +48,19 @@
 
 <div class="left">
   <div class="menu">
-    <div class="title" onclick="f(this);">菜单一</div>
+    <div class="title">菜单一</div>
     <div class="items">
       <div class="item">111</div>
       <div class="item">222</div>
       <div class="item">333</div>
     </div>
-    <div class="title" onclick="f(this);">菜单二</div>
+    <div class="title">菜单二</div>
     <div class="items hide">
       <div class="item">111</div>
       <div class="item">222</div>
       <div class="item">333</div>
     </div>
-    <div class="title" onclick="f(this);">菜单三</div>
+    <div class="title">菜单三</div>
     <div class="items hide">
       <div class="item">111</div>
       <div class="item">222</div>
@@ -69,16 +69,14 @@
   </div>
 </div>
 <div class="right"></div>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 
 <script>
-  function f(ths) {
-    var allItems = document.getElementsByClassName("items");
-    for (var i =0;i<allItems.length;i++){
-      console.log(allItems[i]);
-      allItems[i].classList.add("hide");
-    }
-    ths.nextElementSibling.classList.remove("hide");
-  }
+  $(".title").click(function (){  // jQuery绑定事件
+    // 隐藏所有class里有.items的标签
+    $(".items").addClass("hide");  //批量操作
+    $(this).next().removeClass("hide");
+  });
 </script>
 </body>
 </html>

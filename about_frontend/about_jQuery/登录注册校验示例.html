@@ -26,30 +26,32 @@
 <script src="jquery-3.2.1.min.js"></script>
 <script src="s7validate.js"></script>
 <script>
-  
-  
-  function f1() {
-    $("#myForm").find(":submit").on("click", function () {
+  function myValidation() {
+    // 多次用到的jQuery对象存储到一个变量，避免重复查询文档树
+    var $myForm = $("#myForm");
+    $myForm.find(":submit").on("click", function () {
+      // 定义一个标志位，记录表单填写是否正常
       var flag = true;
-      $("#myForm").find(":text, :password").each(function () {
+      $myForm.find(":text, :password").each(function () {
         var val = $(this).val();
-        if (val.length <=0 ){
+        if (val.length <= 0 ){
           var labelName = $(this).prev("label").text();
           $(this).next("span").text(labelName + "不能为空");
           flag = false;
         }
       });
+      // 表单填写有误就会返回false，阻止submit按钮默认的提交表单事件
       return flag;
+    });
+    // input输入框获取焦点后移除之前的错误提示信息
+    $myForm.find("input[type!='submit']").on("focus", function () {
+      $(this).next(".error").text("");
     })
   }
-
+  // 文档树就绪后执行
   $(document).ready(function () {
-    f1();
+    myValidation();
   });
-//  $("#modal-submit").on("click", function () {
-//    $("#myForm").check();
-//    return false;
-//  });
 
 </script>
 </body>

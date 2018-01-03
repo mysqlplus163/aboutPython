@@ -4,34 +4,40 @@
   <meta charset="UTF-8">
   <meta http-equiv="x-ua-compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>val示例</title>
+  <title>jQuery val示例</title>
 </head>
 <body>
 
 
-<select id="single">
-  <option>Single</option>
-  <option>Single2</option>
+<label for="s1">城市</label>
+<select id="s1">
+  <option value="beijing">北京市</option>
+  <option value="shanghai">上海市</option>
+  <option selected value="guangzhou">广州市</option>
+  <option value="shenzhen">深圳市</option>
 </select>
 <hr>
-<select id="multiple" multiple="multiple">
-  <option selected="selected">Multiple</option>
-  <option>Multiple2</option>
-  <option selected="selected">Multiple3</option>
+<label for="s2">爱好</label>
+<select id="s2" multiple="multiple">
+  <option value="basketball" selected>篮球</option>
+  <option value="football">足球</option>
+  <option value="doublecolorball" selected>双色球</option>
 </select>
-<hr>
-<input type="checkbox" name="checkboxname" value="check1"/> check1
-<input type="checkbox" name="checkboxname" value="check2"/> check2
-<input type="radio" name="r" value="radio1"/> radio1
-<input type="radio" name="r" value="radio2"/> radio2
+
+<input type="checkbox" value="1">
+<input type="radio" value="2">
+<script>
+  $(":checkbox[value='1']").prop("checked", true);
+  $(":radio[value='2']").prop("checked", true);
+</script>
 
 <script src="jquery-3.2.1.min.js"></script>
 <script>
-  $("#single").val("Single2");
-  $("#multiple").val(["Multiple2", "Multiple3"]);
-  $("input").val(["check1", "check2", "radio1"]);
-  $("input").val(["radio1"]);
-  $("input").val(["radio1", "radio2"]);
+  // 单选下拉框
+  $("#s1").val("shanghai");
+  // 多选下拉框
+   $("#s2").val(["basketball", "football"]);
+
 </script>
 </body>
 </html>

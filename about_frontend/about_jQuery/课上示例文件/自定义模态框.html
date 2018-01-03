@@ -15,7 +15,6 @@
       background-color: darkgrey;
       z-index: 999;
     }
-
     .modal {
       width: 600px;
       height: 400px;
@@ -27,10 +26,8 @@
       margin-top: -200px;
       z-index: 1000;
     }
-
     .hide {
       display: none;
-      transition: display 0.5;
     }
   </style>
 </head>
@@ -47,25 +44,23 @@
 </div>
 <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 <script>
-  var tButton = document.getElementById("i0");
+  var tButton = $("#i0")[0];
   tButton.onclick=function () {
-    var coverEle = document.getElementsByClassName("cover")[0];
-    var modalEle = document.getElementsByClassName("modal")[0];
+    var coverEle = $(".cover")[0];
+    var modalEle = $(".modal")[0];
 
-    coverEle.classList.remove("hide");
-    modalEle.classList.remove("hide");
+    $(coverEle).removeClass("hide");
+    $(modalEle).removeClass("hide");
   };
 
-  var cButton = document.getElementById("i3");
+  var cButton = $("#i3")[0];
   cButton.onclick=function () {
-    var coverEle = document.getElementsByClassName("cover")[0];
-    var modalEle = document.getElementsByClassName("modal")[0];
+    var coverEle = $(".cover")[0];
+    var modalEle = $(".modal")[0];
 
-    coverEle.classList.add("hide");
-    modalEle.classList.add("hide");
+    $(coverEle).addClass("hide");
+    $(modalEle).addClass("hide");
   }
-
-
 </script>
 </body>
 </html>
