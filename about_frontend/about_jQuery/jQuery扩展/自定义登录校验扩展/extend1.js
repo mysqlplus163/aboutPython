@@ -1,14 +1,13 @@
-
-
+function ff() {
   $.extend({
-  dalong1: function(arg){
+  dalong1: function(){
     f1();
-    console.log("extend1");
-    console.log(arg);
   }
 });
 
 function f1() {
   console.log("extend1 f1");
 }
+}
 
+ff();
