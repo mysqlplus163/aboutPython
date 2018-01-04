@@ -11,7 +11,7 @@
     }
 
     /*遮罩层*/
-    .shade {
+    .cover {
       position: fixed;
       top: 0;
       right: 0;
@@ -19,6 +19,7 @@
       bottom: 0;
       background-color: black;
       opacity: 0.8;
+      z-index: 999;
     }
 
     .modal {
@@ -30,6 +31,7 @@
       margin-top: -100px;
       margin-left: -200px;
       background-color: white;
+      z-index: 1000;
     }
   </style>
 </head>
@@ -76,15 +78,21 @@
   </tbody>
 </table>
 
-<div id="myShade" class="shade hide"></div>
+<div id="myCover" class="cover hide"></div>
 <div id="myModal" class="modal hide">
   <div>
-    <label for="modal-name"></label>
-    <input type="text" id="modal-name">
-    <label for="modal-habit"></label>
-    <input type="text" id="modal-habit">
-    <button id="modal-submit">提交</button>
-    <button id="modal-cancel">取消</button>
+    <p>
+      <label for="modal-name">姓名</label>
+      <input type="text" id="modal-name">
+    </p>
+    <p>
+      <label for="modal-habit">爱好</label>
+      <input type="text" id="modal-habit">
+    </p>
+    <p>
+      <button id="modal-submit">提交</button>
+      <button id="modal-cancel">取消</button>
+    </p>
   </div>
 </div>
 <script src="jquery-3.2.1.min.js"></script>
@@ -108,13 +116,13 @@
   // 显示模态框
   function showModal() {
     $(".modal").removeClass("hide");
-    $(".shade").removeClass("hide");
+    $(".cover").removeClass("hide");
   }
 
   // 隐藏模态框
   function hideModal() {
     $(".modal").addClass("hide");
-    $(".shade").addClass("hide");
+    $(".cover").addClass("hide");
   }
 
   $(document).ready(function () {
@@ -156,7 +164,6 @@
     // 删除
     $("tbody").on("click", ".delete-btn", function () {
       $(this).parent().parent().nextAll().each(function () {
-        console.log(this);
         var num = $(this).children().first().text();
         $(this).children().first().text(num - 1);
       });
