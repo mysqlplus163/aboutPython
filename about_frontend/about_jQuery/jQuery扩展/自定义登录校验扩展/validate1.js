@@ -1,3 +1,4 @@
+"use strict";
 (function (jq) {
   jq.extend({
     validate: function () {
@@ -19,5 +20,5 @@
       return flag;
     });
     }
-  })
+  });
 })(jQuery);

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="x-ua-compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>登录校验示例</title>
+  <style>
+    .login-form {
+      margin: 100px auto 0;
+      max-width: 330px;
+    }
+    .login-form > div {
+      margin: 15px 0;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+
+
+<div>
+  <form action="" class="login-form" novalidate>
+
+    <div>
+      <label for="username">姓名</label>
+      <input id="username" type="text" name="name" required autocomplete="off">
+      <span class="error"></span>
+    </div>
+    <div>
+      <label for="passwd">密码</label>
+      <input id="passwd" type="password" name="password" required autocomplete="off">
+      <span class="error"></span>
+    </div>
+    <div>
+      <label for="mobile">手机</label>
+      <input id="mobile" type="text" name="mobile" required autocomplete="off">
+      <span class="error"></span>
+    </div>
+    <div>
+      <label for="where">来自</label>
+      <input id="where" type="text" name="where" autocomplete="off">
+      <span class="error"></span>
+    </div>
+    <div>
+      <input type="submit" value="登录">
+    </div>
+
+  </form>
+</div>
+
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script src="validate.js"></script>
+<script>
+  $.validate();
+</script>
+</body>
+</html>
