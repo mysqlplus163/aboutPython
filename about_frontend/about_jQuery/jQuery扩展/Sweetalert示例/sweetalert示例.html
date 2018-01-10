@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="x-ua-compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>sweetalert示例</title>
+
+</head>
+<body>
+
+<script src="sweetalert.min.js"></script>
+<script>
+  // 最简单的弹出框
+//  swal("这里放标题", "这里放内容");
+  // 标准三件套
+//  swal({
+//    title: "这里写标题",
+//    text: "这里放内容",
+//    icon: "success"  // 这里放图标的类型（success,warning,info,error）
+//  });
+  // 带二次确认按钮
+swal({
+  title: "这里写标题",
+  text: "这里放内容",
+  icon: "warning",  // 这里放图标的类型（success,warning,info,error）
+  buttons: {
+    cancel: {
+      text: "容我三思",
+      visible: true,
+      value: false
+    },
+    confirm: {
+      text: "我就是要删除"
+    }
+  }
+}).then(function (isConfirm) {
+    if (isConfirm){
+      swal("你死定了", {button: "确认"});
+    }
+    });
+
+</script>
+</body>
+</html>
