@@ -17,11 +17,15 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from . import views, test_views
+from . import views, test_views, view01
 
 
 
 urlpatterns = [
+    url(r'^test1/', view01.test1),
+    url(r'^test2/', view01.test2),
+    url(r'^test3/', view01.test3),
+
     # url(r'^admin/', admin.site.urls),
     url(r'^login/', views.login),
     url(r'^index/', views.index),

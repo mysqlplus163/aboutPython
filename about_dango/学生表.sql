@@ -11,7 +11,7 @@ SELECT * FROM student left JOIN class on student.class_id = class.id
 
 ALTER TABLE student ALTER COLUMN name CHAR(10) not null;
 
--- 插入学生
+-- 插入学生数据
 INSERT INTO student(name, class_id) VALUES ("张三",5);
 
 -- 查询学生表
