@@ -15,9 +15,10 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
+from django.conf.urls import url, include
 from django.contrib import admin
-from . import views, test_views, view01
+from . import views, test_views, view01, view02
+from app01 import urls as app01_urls
 
 
 
@@ -30,6 +31,7 @@ urlpatterns = [
     url(r'^login/', views.login),
     url(r'^index/', views.index),
     url(r'^class_list/', views.class_list),
+    url(r'^search/', views.search),
     url(r'^add_class/', views.add_class),
     url(r'^delete_class/', views.delete_class),
     url(r'^edit_class/', views.edit_class),
@@ -55,4 +57,9 @@ urlpatterns = [
     url(r'^l2/', test_views.l2),
     url(r'^logout/', views.logout),
 
+    # 测试一下url的一些内容
+    url(r'^book/(\d+)/$', view02.url_test, name="booktest"),
+
+    # include
+    url(r'app01/', include(app01_urls, namespace="app"))
 ]
