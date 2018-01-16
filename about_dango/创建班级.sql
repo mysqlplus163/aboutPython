@@ -1,3 +1,4 @@
+-- 创建班级表
 CREATE TABLE class(
   id int auto_increment PRIMARY KEY,
   title CHAR(10) NOT NULL
@@ -5,7 +6,7 @@ CREATE TABLE class(
 
 -- 新增班级
 
-insert into class(title) VALUE ("全栈4期");
+insert into class(title) VALUE ("全栈X期");
 
 CREATE TABLE user(
   id int auto_increment PRIMARY KEY,
