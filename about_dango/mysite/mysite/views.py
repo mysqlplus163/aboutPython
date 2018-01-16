@@ -132,10 +132,10 @@ def student_list(request):
 
 
 def add_student(request):
+    # 如果是POST请求表示前端提交数据过来
     if request.method == "POST":
         student_name = request.POST.get("student_name")
         class_id = request.POST.get("class_id")
-        print(student_name, class_id)
         conn = pymysql.connect(host="127.0.0.1", port=3306, user="root", passwd="root1234", db="mysite", charset="utf8")
         cursor = conn.cursor(cursor=pymysql.cursors.DictCursor)
         cursor.execute("insert into student(name, class_id) VALUES (%s, %s)", [student_name, class_id])
@@ -143,7 +143,10 @@ def add_student(request):
         cursor.close()
         conn.close()
         return redirect("/student_list/")
+    # 前端不发送POST请求情况下默认返回新增学生信息页面
     else:
+        # 因为我们新添加学生信息的时候需要指定所属的班级
+        # 所以需要先查询出所有的班级信息，填充到页面上
         conn = pymysql.connect(host="127.0.0.1", port=3306, user="root", passwd="root1234", db="mysite", charset="utf8")
         cursor = conn.cursor(cursor=pymysql.cursors.DictCursor)
         cursor.execute("select id, name from class")
@@ -154,19 +157,18 @@ def add_student(request):
 
 
 from tools.sql_master import get_list, get_one, modify
-def edit_student(request):
-
-    if request.method == "POST":
-        student_id = request.POST.get("student_id")
-        student_name = request.POST.get("student_name")
-        class_id = request.POST.get("class_id")
-        modify("update student set name=%s, class_id= %s WHERE id=%s", [student_name, class_id, student_id])
-        return redirect("/student_list/")
-    else:
-        student_id = request.GET.get("student_id")
-        class_list = get_list("select id, name from class")
-        student = get_one("select id, name, class_id from student where id=%s", [student_id, ])
-        return render(request, "edit_student.html", {"class_list": class_list, "student": student})
+# def edit_student(request):
+#     if request.method == "POST":
+#         student_id = request.POST.get("student_id")
+#         student_name = request.POST.get("student_name")
+#         class_id = request.POST.get("class_id")
+#         modify("update student set name=%s, class_id= %s WHERE id=%s", [student_name, class_id, student_id])
+#         return redirect("/student_list/")
+#     else:
+#         student_id = request.GET.get("student_id")
+#         class_list = get_list("select id, name from class")
+#         student = get_one("select id, name, class_id from student where id=%s", [student_id, ])
+#         return render(request, "edit_student.html", {"class_list": class_list, "student": student})
 
 @check_login
 def modal_add_class(request):
@@ -210,6 +212,7 @@ def magic(data):
     return list(tmp.values())
 
 def teacher_list(request):
+    print(request.body)
     if request.method == "POST":
         pass
     else:
@@ -221,7 +224,6 @@ def teacher_list(request):
 from tools.sql_master import create, SQLManager
 def add_teacher(request):
     if request.method == "POST":
-
         class_list = request.POST.getlist("class_id")
         teacher_name = request.POST.get("teacher_name")
         # 创建老师
@@ -242,20 +244,16 @@ def add_teacher(request):
         for i in class_list:
             tmp = [teacher_id, i]
             data_list.append(tmp)
-
         db = SQLManager()
         db.multi_modify("insert into teacher2class(teacher_id, class_id) VALUES (%s, %s)", data_list)
         db.close()
         return redirect("/teacher_list/")
-
-
     else:
         class_list = get_list("select id, name from class")
         return render(request, "add_teacher.html", {"class_list": class_list})
 
 
 def edit_teacher(request):
-
     if request.method == "POST":
         teacher_id = request.POST.get("teacher_id")
         class_ids = request.POST.getlist("class_id")
@@ -274,25 +272,15 @@ def edit_teacher(request):
         db.multi_modify("insert into teacher2class(teacher_id, class_id) VALUES (%s, %s)", add_id_list)
         db.close()
         return redirect("/teacher_list")
-
     else:
-
         teacher_id = request.GET.get("teacher_id")
-        # db = SQLManager()
-        # class_list = db.get_list("select id, name from class")
-        # teacher_info = db.get_list("SELECT teacher.id, teacher.name, teacher2class.class_id FROM teacher  LEFT JOIN teacher2class ON teacher.id = teacher2class.teacher_id WHERE teacher.id=%s;", [teacher_id])
-        # db.close()
-
         with SQLManager() as db:
             class_list = db.get_list("select id, name from class")
             teacher_info = db.get_list("SELECT teacher.id, teacher.name, teacher2class.class_id FROM teacher  LEFT JOIN teacher2class ON teacher.id = teacher2class.teacher_id WHERE teacher.id=%s;", [teacher_id])
-
-        # print(db.get_list("select id, name from class"))
         ret = teacher_info[0]
         ret["class_ids"] = [ret["class_id"], ]
         for i in teacher_info[1:]:
             ret["class_ids"].append(i["class_id"])
-
         return render(request, "edit_teacher.html", {"class_list": class_list, "teacher": ret})
 
 
@@ -300,3 +288,100 @@ def logout(request):
     rep = redirect("/login/")
     rep.delete_cookie("login")
     return rep
+
+# 以下为二次更新
+
+def delete_student(request):
+    # 从GET请求的URL中取到要删除的学生ID
+    student_id = request.GET.get("student_id")
+    # 连接数据库
+    conn = pymysql.connect(host="127.0.0.1", port=3306, user="root", passwd="root1234", db="mysite", charset="utf8")
+    cursor = conn.cursor(cursor=pymysql.cursors.DictCursor)
+    # 删除指定的学生
+    sql = "delete from student WHERE id=%s;"
+    # 执行SQL语句
+    cursor.execute(sql, [student_id, ])
+    conn.commit()
+    conn.close()
+    # 删除成功，跳转到学生列表页
+    return redirect("/student_list/")
+
+def edit_student(request):
+    if request.method == "POST":
+        student_id = request.POST.get("student_id")
+        student_name = request.POST.get("student_name")
+        class_id = request.POST.get("class_id")
+        # 更新学生表的SQL
+        sql = "update student set name=%s, class_id= %s WHERE id=%s;"
+        # 连接数据库
+        conn = pymysql.connect(host="127.0.0.1", port=3306, user="root", passwd="root1234", db="mysite", charset="utf8")
+        cursor = conn.cursor(cursor=pymysql.cursors.DictCursor)
+        cursor.execute(sql, [student_name, class_id, student_id])
+        cursor.close()
+        conn.close()
+        # 更新完学生信息之后跳转到学生列表页面
+        return redirect("/student_list/")
+    else:
+        # 要编辑学生信息就需要在页面上把当前学生的信息以及所有的班级信息都展示出来
+        # 取到要编辑的学生的ID
+        student_id = request.GET.get("student_id")
+        # 连接数据库
+        conn = pymysql.connect(host="127.0.0.1", port=3306, user="root", passwd="root1234", db="mysite", charset="utf8")
+        cursor = conn.cursor(cursor=pymysql.cursors.DictCursor)
+        # 取到所有的班级信息
+        get_class_sql = "select id, name from class;"
+        cursor.execute(get_class_sql)
+        class_list = cursor.fetchall()
+        get_student_sql = "select id, name, class_id from student where id=%s;"
+        cursor.execute(get_student_sql, [student_id, ])
+        student = cursor.fetchone()
+        cursor.close()
+        conn.close()
+        return render(request, "edit_student.html", {"class_list": class_list, "student": student})
+
+
+def teacher_list(request):
+    # 连接数据库
+    conn = pymysql.connect(host="127.0.0.1", port=3306, user="root", passwd="root1234", db="mysite", charset="utf8")
+    cursor = conn.cursor(cursor=pymysql.cursors.DictCursor)
+    sql = "select teacher.id, teacher.name, class.name as cname from teacher LEFT JOIN teacher2class on teacher.id = teacher2class.teacher_id LEFT JOIN class ON teacher2class.class_id = class.id;"
+    cursor.execute(sql)
+    teacher_list_o = cursor.fetchall()
+    # 将查询到的数据类型转换一下
+    teacher_list = magic(teacher_list_o)
+    return render(request, "teacher_list.html", {"teacher_list": teacher_list})
+
+
+def delete_teacher(request):
+    # 从GET请求的URL中取到要删除的老师ID
+    teacher_id = request.GET.get("student_id")
+    # 连接数据库
+    conn = pymysql.connect(host="127.0.0.1", port=3306, user="root", passwd="root1234", db="mysite", charset="utf8")
+    cursor = conn.cursor(cursor=pymysql.cursors.DictCursor)
+    # 删除指定的老师
+    sql = "delete from teacher WHERE id=%s;"
+    # 执行SQL语句
+    cursor.execute(sql, [teacher_id, ])
+    conn.commit()
+    conn.close()
+    # 删除成功，跳转到老师列表页
+    return redirect("/teacher_list/")
+
+
+def add_teacher(request):
+    pass
+
+
+def search(request):
+    if request.method == "POST":
+        search_str = request.POST.get("search_str")
+        print(search_str)
+        print("=" * 120)
+        conn = pymysql.connect(host="127.0.0.1", port=3306, user="root", passwd="root1234", db="mysite", charset="utf8")
+        cursor = conn.cursor(cursor=pymysql.cursors.DictCursor)
+        search_str = "%{}%".format(search_str)
+        cursor.execute("select id, name from class where name LIKE %s;", [search_str, ])
+        class_list = cursor.fetchall()
+        cursor.close()
+        conn.close()
+        return render(request, "class_list.html", {"class_list": class_list})
