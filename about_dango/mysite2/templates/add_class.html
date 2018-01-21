@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="x-ua-compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>添加班级</title>
+</head>
+<body>
+<form action="{% url 'add_class' %}" method="post">
+  {% csrf_token %}
+  <p>班级名称：<input type="text" name="cname"></p>
+  <p>开班日期：<input type="date" name="first_day"></p>
+  <p>提交<input type="submit"></p>
+</form>
+</body>
+</html>

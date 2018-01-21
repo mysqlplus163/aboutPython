@@ -5,6 +5,7 @@
 
 
 from django.shortcuts import render, redirect, HttpResponse
+from django.http import HttpResponse
 import pymysql
 from functools import wraps
 
@@ -87,6 +88,7 @@ def delete_class(request):
 
 
 def edit_class(request):
+    print(request.body)
     if request.method == "POST":
         class_id = request.POST.get("class_id")
         class_name = request.POST.get("class_name")
@@ -385,3 +387,23 @@ def search(request):
         cursor.close()
         conn.close()
         return render(request, "class_list.html", {"class_list": class_list})
+
+
+def upload(request):
+    """
+    保存上传文件前，数据需要存放在某个位置。默认当上传文件小于2.5M时，django会将上传文件的全部内容读进内存。从内存读取一次，写磁盘一次。
+    但当上传文件很大时，django会把上传文件写到临时文件中，然后存放到系统临时文件夹中。
+    :param request:
+    :return:
+    """
+    if request.method == "POST":
+        # 从请求的FILES中获取上传文件的文件名，file为页面上type=files类型input的name属性值
+        filename = request.FILES["file"].name
+        # 在项目目录下新建一个文件
+        with open(filename, "wb") as f:
+            # 从上传的文件对象中一点一点读
+            for chunk in request.FILES["file"].chunks():
+                # 写入本地文件
+                f.write(chunk)
+        return HttpResponse("上传OK")
+
