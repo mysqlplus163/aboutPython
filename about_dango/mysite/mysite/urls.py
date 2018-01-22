@@ -19,7 +19,7 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from . import views, test_views, view01, view02
 from app01 import urls as app01_urls
-
+from app01 import views as app01_views
 
 
 urlpatterns = [
@@ -61,5 +61,8 @@ urlpatterns = [
     url(r'^book/(\d+)/$', view02.url_test, name="booktest"),
 
     # include
-    url(r'app01/', include(app01_urls, namespace="app"))
+    url(r'app01/', include(app01_urls, namespace="app")),
+
+    # view test
+    url(r'^view_test/$', app01_views.view_test),
 ]
