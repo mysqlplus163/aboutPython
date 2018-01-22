@@ -34,3 +34,4 @@ class Student(models.Model):
 class Teacher(models.Model):
     tname = models.CharField(max_length=32)
     class_list = models.ManyToManyField(to="Class")
+
