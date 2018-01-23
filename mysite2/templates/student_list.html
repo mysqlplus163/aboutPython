@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="x-ua-compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>学生列表</title>
+</head>
+<body>
+<a href="{% url 'add_student' %}">添加学生</a>
+<table border="1">
+  <thead>
+  <tr>
+    <th>#</th>
+    <th>id</th>
+    <th>学生姓名</th>
+    <th>学生班级</th>
+    <th>开班日期</th>
+    <th>操作</th>
+  </tr>
+  </thead>
+  <tbody>
+  {% for student in student_list%}
+  <tr>
+  <td>{{ forloop.counter}}</td>
+  <td>{{ student.id }}</td>
+  <td>{{ student.sname }}</td>
+  <td>{{ student.cid.cname }}</td>
+  <td>{{ student.cid.first_day|date:'Y-m-d' }}</td>
+  <td>
+    <a href="{% url 'delete_student' student.id %}">删除</a>
+    <a href="{% url 'edit_student' student.id %}">编辑</a>
+  </td>
+  </tr>
+  {% endfor %}
+  </tbody>
+</table>
+</body>
+</html>

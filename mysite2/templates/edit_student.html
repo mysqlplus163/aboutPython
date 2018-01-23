@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="x-ua-compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>编辑学生信息</title>
+</head>
+<body>
+<form action="{% url 'edit_student' student.id %}" method="post">
+  {% csrf_token %}
+  <p>学生姓名：<input type="text" name="sname" value="{{ student.sname }}"></p>
+  <label for="class_id">所在班级：</label>
+  <select name="class_id" id="class_id">
+    {% for class in class_list %}
+      {% if class.id == student.cid_id %}
+        <option value="{{ class.id }}" selected>{{ class.cname }}</option>
+      {% else %}
+        <option value="{{ class.id }}">{{ class.cname }}</option>
+      {% endif %}
+    {% endfor %}
+  </select>
+  <p><input type="submit" value="提交"></p>
+</form>
+</body>
+</html>
