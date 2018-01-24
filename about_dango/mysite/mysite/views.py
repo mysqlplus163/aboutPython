@@ -8,40 +8,46 @@ from django.shortcuts import render, redirect, HttpResponse
 from django.http import HttpResponse
 import pymysql
 from functools import wraps
-
+from django import views
 
 def check_login(func):
     @wraps(func)
     def inner(request, *args, **kwargs):
         next_url = request.get_full_path()
-        print(next_url)
-        print("-" * 100)
-        print(request.get_signed_cookie("login", salt="S7", default=None))
-        print(request.get_signed_cookie("login", salt="S7", default=None) == "yes")
-        if request.get_signed_cookie("login", salt="S7", default=None) == "yes":
-            print("已经登录的用户...")
+        if request.get_signed_cookie("login", salt="SSS", default=None) == "yes":
+            # 已经登录的用户...
             return func(request, *args, **kwargs)
         else:
-            print("没有登录的用户，跳转刚到登录页面...")
-            return redirect("/login/?nexturl={}".format(next_url))
+            # 没有登录的用户，跳转刚到登录页面
+            return redirect("/login/?next={}".format(next_url))
     return inner
+
+
+class Login(views.View):
+
+    def dispatch(self, request, *args, **kwargs):
+        super(Login).dispatch(request, *args, **kwargs)
+
+    def get(self, request):
+        pass
+
+    def post(self, request):
+        pass
+
+
 
 
 def login(request):
     if request.method == "POST":
         username = request.POST.get("username")
         passwd = request.POST.get("password")
-        print(username, passwd)
-        if username == "alex" and passwd == "dashabi":
-            print("登陆成功...")
-            next_url = request.GET.get("nexturl")
-            print(next_url)
-            print("=" * 80)
-            if next_url:
+        if username == "xxx" and passwd == "dashabi":
+            next_url = request.GET.get("next")
+            if next_url and next_url != "/login/":
                 response = redirect(next_url)
             else:
                 response = redirect("/class_list/")
-            response.set_signed_cookie("login", "yes", salt="S7")
+            response.set_signed_cookie("login", "yes", salt="SSS")
             return response
     return render(request, "login.html")
 
