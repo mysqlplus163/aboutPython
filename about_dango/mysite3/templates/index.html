@@ -1,20 +1,16 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="x-ua-compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>主页</title>
+  <title>index页面</title>
 </head>
 <body>
 
-<h1>这是主页</h1>
+<h1>Hello {{ user }}!</h1>
 
-<form action="/home/" method="post">
-  {% csrf_token %}
-  <input type="text">
-  <input type="submit" value="提交">
-</form>
+<a href="/logout/">退出登录</a>
 
 </body>
 </html>
