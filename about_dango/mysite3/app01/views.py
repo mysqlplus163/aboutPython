@@ -1,9 +1,11 @@
 from django.shortcuts import render, redirect, HttpResponse
 
 # Create your views here.
+from functools import wraps
 
 
 def check_login(func):
+    @wraps(func)
     def inner(request, *args, **kwargs):
         if request.COOKIES.get("user", None):
             return func(request, *args, **kwargs)
@@ -15,10 +17,12 @@ def check_login(func):
 def login(request):
     user = request.POST.get("user")
     pwd = request.POST.get("pwd")
-    
     if user == "alex" and pwd == "alex1234":
         rep = redirect("/index/")
-        rep.set_cookie("user", "alex", max_age=10)
+        import datetime
+        now = datetime.datetime.now()
+        d = datetime.timedelta(seconds=10)
+        rep.set_cookie("user", user, expires=now+d)
         return rep
     
     return render(request, "login.html")
@@ -30,12 +34,10 @@ def logout(request):
     return rep
 
 
+@check_login
 def index(request):
     current_user = request.COOKIES.get("user", None)
-    if current_user:
-        return HttpResponse("Welcome {}!".format(current_user))
-    else:
-        return redirect("/login/")
+    return HttpResponse("Welcome {}!".format(current_user))
 
 
 data = []
@@ -43,9 +45,6 @@ data = []
 for i in range(1, 302):
     tmp = {"id": i, "name": "alex-{}".format(i)}
     data.append(tmp)
-
-print(data)
-
 
 # def user_list(request):
 #
