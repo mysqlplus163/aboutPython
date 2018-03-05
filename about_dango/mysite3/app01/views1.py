@@ -47,5 +47,6 @@ class Home(View):
     def dispatch(self, request, *args, **kwargs):
         return super(Home).dispatch(self, request, *args, **kwargs)
 
+    # @check_login
     def get(self, request):
         return render(request, "home.html")
