@@ -6,12 +6,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>返回顶部示例</title>
   <style>
+    * {
+      margin: 0;
+    }
+
+    .d1 {
+      height: 1000px;
+      background-color: #eeee;
+    }
+
     .scrollTop {
-      width: 100px;
-      height: 45px;
       background-color: darkgrey;
+      padding: 10px;
       text-align: center;
-      line-height: 45px;
       position: fixed;
       right: 10px;
       bottom: 20px;
@@ -19,8 +26,7 @@
   </style>
 </head>
 <body>
-<div style="height: 1000px; background-color: red">111</div>
+<div class="d1">111</div>
 <div class="scrollTop">返回顶部</div>
-
 </body>
 </html>
