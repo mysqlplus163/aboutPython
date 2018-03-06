@@ -23,11 +23,11 @@ a {
 }
 .side-bar>* {
     padding: 20px 15px;
+    text-align: center;
 }
 
-
 .header>* {
-    margin: 10px 0;
+    margin: 40px 0 10px 0;
 }
 
 .header .logo {
@@ -81,10 +81,14 @@ a {
 }
 
 /*文章*/
-.main .article {
+.article {
     background-color: white;
     margin-bottom: 20px;
-    box-shadow: 3px 3px 3px rgba(0,0,0, 0.2)
+    transition: all 0.2s;
+}
+.article:hover {
+  box-shadow: 3px 3px 3px rgba(0,0,0, 0.2);
+  transform: translate3d(0, -1px, 0);
 }
 
 /*文章标题和内容*/

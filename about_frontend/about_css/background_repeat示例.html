@@ -6,28 +6,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>background repeat</title>
   <style>
-    .c1 {
+    div {
       width: 600px;
       height: 600px;
+      border: 1px solid #3c3c3c;
     }
-    div {
-      background: url("huluwa.png") no-repeat center right;
+    .c1 {
+      background: url("huluwa.png") no-repeat top left;
+    }
+
+    .c2 {
+      background: url("huluwa.png") no-repeat center center;
+    }
+
+    .c3 {
+      background: url("huluwa.png") no-repeat bottom right;
     }
   </style>
 </head>
 <body>
 <div class="c1"></div>
+<div class="c2"></div>
+<div class="c3"></div>
 
-<ul type="none">
-  <li>001</li>
-  <li>002</li>
-  <li>003</li>
-</ul>
-
-<ol type="none">
-  <li>001</li>
-  <li>002</li>
-  <li>003</li>
-</ol>
 </body>
 </html>
