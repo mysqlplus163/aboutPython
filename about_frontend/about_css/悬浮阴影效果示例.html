@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="x-ua-compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>悬浮阴影效果示例</title>
+  <style>
+    img:hover {
+      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+      transform: translate3d(0, -2px, 0);
+    }
+    img {
+      transition: all .2s linear;
+    }
+    #d1 {
+      height: 200px;
+      width: 300px;
+      border: 1px solid black;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+      transform: translate3d(0, -2px, 0);
+    }
+  </style>
+</head>
+<body>
+
+
+<div>
+  <img src="https://i1.mifile.cn/a1/pms_1508125822.19716710!220x220.jpg" alt="">
+  <img src="https://i1.mifile.cn/a1/pms_1508125822.19716710!220x220.jpg" alt="">
+  <img src="https://i1.mifile.cn/a1/pms_1508125822.19716710!220x220.jpg" alt="">
+  <img src="https://i1.mifile.cn/a1/pms_1508125822.19716710!220x220.jpg" alt="">
+</div>
+
+<div id="d1">
+
+</div>
+</body>
+</html>

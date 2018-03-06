@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>选择器权重不进位验证示例</title>
+  <style>
+    #d1 {
+      color: red;
+    }
+    .c1>.c2>.c3>.c4>.c5>.c6>.c7>.c8>.c9>.c10>.c11 {
+      color: green;
+    }
+  </style>
+</head>
+<body>
+
+<div class="c1">
+  <div class="c2">
+    <div class="c3">
+      <div class="c4">
+        <div class="c5">
+          <div class="c6">
+            <div class="c7">
+              <div class="c8">
+                <div class="c9">
+                  <div class="c10">
+                    <div id="d1" class="c11">c11</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
