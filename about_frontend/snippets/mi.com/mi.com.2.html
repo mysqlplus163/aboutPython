@@ -40,22 +40,23 @@
     }
 
     .container {
-      width: 80%;
+      width: 1226px;
       margin: 0 auto;
     }
 
-    .fl li {
+    .nav .fl li {
       float: left;
       padding: 15px 15px 15px 0;
     }
 
-    .fr li {
+    .nav .fr li {
       float: right;
       padding: 15px 0 15px 15px;
     }
 
     .nav ul,
-    .header ul{
+    .header ul,
+    .main-menu ul {
       list-style-type: none;
     }
 
@@ -112,6 +113,30 @@
       border: 1px solid black;
       height: 1000px;
     }
+
+    .main-menu {
+      width: 234px;
+      height: 460px;
+      background-color: #58585a;
+    }
+
+    .main-menu ul {
+      height: 420px;
+      border: 0;
+      padding: 20px 0 20px 20px;
+    }
+
+    .main-menu li {
+      height: 42px;
+      line-height: 42px;
+    }
+
+    /* 首屏 轮播广告 */
+    .main-advert {
+      width: 992px;
+      height: 460px;
+      background-color: black;
+    }
   </style>
 </head>
 <body>
@@ -164,8 +189,23 @@
 <!-- 首屏 开始-->
 <div class="main">
   <div class="container">
-    <div class="main-menu"></div>
-    <div class="main-advert"></div>
+    <div class="main-menu fl">
+      <ul>
+        <li><a href="">手机 电话卡</a></li>
+        <li><a href="">电视 盒子</a></li>
+        <li><a href="">笔记本</a></li>
+        <li><a href="">智能 家电</a></li>
+        <li><a href="">健康 家居</a></li>
+        <li><a href="">出行 儿童</a></li>
+        <li><a href="">路由器 手机配件</a></li>
+        <li><a href="">移动电源 插线板</a></li>
+        <li><a href="">耳机 音箱</a></li>
+        <li><a href="">生活 米兔</a></li>
+      </ul>
+    </div>
+    <div class="main-advert fr">
+      <img src="https://dummyimage.com/992x460/f1e1cc/fff.png" alt="图丢了">
+    </div>
   </div>
 </div>
 <!-- 首屏 结束-->
