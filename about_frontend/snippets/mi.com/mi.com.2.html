@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="x-ua-compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>mi.com</title>
+  <title>mi.com.2</title>
   <style>
     * {
       margin: 0;
@@ -55,44 +55,43 @@
     }
 
     .nav ul,
-    .header ul,
-    .main-menu ul {
+    .header-menu ul,
+    .left-menu ul {
       list-style-type: none;
     }
 
-    /*第二条*/
-    .header {
-      margin: 25px 0;
+    /*首屏 相关样式*/
+
+    .main-header {
+      margin-top: 20px;
+    }
+
+    .header-img {
+      width: 234px;
+    }
+
+    .header-menu li {
+      height: 55px;
+      float: left;
     }
 
     .header-menu a {
       color: black;
+      padding-right: 15px;
+      line-height: 55px;
     }
 
-    .logo {
-      height: 55px;
-      width: 55px;
-      background-color: tomato;
-      overflow: hidden;
-    }
-
-    .advert {
-      background: url("https://i1.mifile.cn/f/i/g/2015/logoGIFnvshen.gif") no-repeat center;
-      width: 165px;
-      height: 55px;
-      margin-right: 15px;
-    }
-
-    .search-box {
+    /*搜索框*/
+    .header-search {
       width: 300px;
     }
 
-    .search-box input {
+    .header-search input {
       float: left;
       border: 1px solid #e3e3e3;
     }
 
-    .search-box input[type="text"] {
+    .header-search input[type="text"] {
       height: 53px;
       line-height: 53px;
       font-size: 28px;
@@ -100,43 +99,95 @@
       outline: 0;
     }
 
-    .search-box input[type="submit"] {
+    .header-search input[type="submit"] {
       height: 55px;
       width: 19%;
     }
 
-    .header-menu li {
-      float: left;
+    /*左侧菜单+轮播图 开始*/
+    .menu-carousel {
+      margin-top: 20px;
     }
 
-    .main {
-      border: 1px solid black;
-      height: 1000px;
-    }
-
-    .main-menu {
+    .left-menu {
       width: 234px;
       height: 460px;
-      background-color: #58585a;
+      background-color: #3d3d3d;
     }
 
-    .main-menu ul {
-      height: 420px;
-      border: 0;
-      padding: 20px 0 20px 20px;
+    .left-menu ul {
+      padding: 20px 0;
     }
 
-    .main-menu li {
-      height: 42px;
-      line-height: 42px;
+    .left-menu li {
+      padding: 10px 0 10px 25px;
     }
 
-    /* 首屏 轮播广告 */
-    .main-advert {
+    .left-menu li:hover {
+      background-color: tomato;
+    }
+
+    .left-menu a {
+      color: white;
+    }
+
+    /*左侧菜单+轮播图 结束*/
+
+    /*推广区*/
+    .right-part a {
+      margin-left: 10px;
+    }
+
+    /*限时闪购*/
+    .push-ad {
+      margin-top: 20px;
+    }
+
+    .flash-sale {
+      margin-top: 20px;
+    }
+
+    .flash-title {
+      margin-bottom: 15px;
+    }
+
+    /*商品展示区*/
+    .goods-list {
+      margin-top: 25px;
+      background-color: #eeeeee;
+    }
+
+    .goods-category {
+      padding: 15px 0;
+    }
+    .goods-box-right {
       width: 992px;
-      height: 460px;
-      background-color: black;
     }
+
+    .goods-item {
+      height: 246px;
+      width: 234px;
+      padding: 34px 0 20px;
+      background-color: white;
+      margin-left: 14px;
+      margin-bottom: 14px;
+    }
+
+    .goods-img {
+      height: 150px;
+      width: 150px;
+      margin: 0 auto 18px;
+    }
+
+    .goods-title,
+    .goods-price {
+      text-align: center;
+    }
+
+    .goods-price {
+      color: red;
+    }
+
   </style>
 </head>
 <body>
@@ -163,51 +214,168 @@
   </div>
 </div>
 <!--顶部导航 结束-->
-<!--顶部菜单 开始-->
-<div class="header">
-  <div class="container clearfix">
-    <div class="logo fl"><a href=""><img src="https://s01.mifile.cn/i/mi-logo.png" alt=""></a></div>
-    <a class="advert fl" href=""></a>
-    <div class="header-menu fl">
-      <ul>
-        <li><a href="">小米手机</a></li>
-        <li><a href="">红米</a></li>
-        <li><a href="">电视</a></li>
-        <li><a href="">笔记本</a></li>
-        <li><a href="">盒子</a></li>
-        <li><a href="">新品</a></li>
-      </ul>
-    </div>
-    <div class="search-box fr">
-      <input type="text">
-      <input type="submit" value="搜索">
-    </div>
-  </div>
-</div>
-<!--顶部菜单 结束-->
 
-<!-- 首屏 开始-->
+<!--首屏 开始-->
 <div class="main">
   <div class="container">
-    <div class="main-menu fl">
-      <ul>
-        <li><a href="">手机 电话卡</a></li>
-        <li><a href="">电视 盒子</a></li>
-        <li><a href="">笔记本</a></li>
-        <li><a href="">智能 家电</a></li>
-        <li><a href="">健康 家居</a></li>
-        <li><a href="">出行 儿童</a></li>
-        <li><a href="">路由器 手机配件</a></li>
-        <li><a href="">移动电源 插线板</a></li>
-        <li><a href="">耳机 音箱</a></li>
-        <li><a href="">生活 米兔</a></li>
-      </ul>
+    <!--顶部菜单 开始-->
+    <div class="main-header clearfix">
+      <div class="header-img fl">
+        <div class="logo fl">
+          <a href=""><img src="./img/logo.png" alt=""></a>
+        </div>
+        <div class="header-ad fr">
+          <a href=""><img src="./img/logo_r.png" alt=""></a>
+        </div>
+      </div>
+
+      <div class="header-menu">
+        <ul>
+          <li><a href="">小米手机</a></li>
+          <li><a href="">红米</a></li>
+          <li><a href="">电视</a></li>
+          <li><a href="">笔记本</a></li>
+          <li><a href="">盒子</a></li>
+          <li><a href="">新品</a></li>
+        </ul>
+      </div>
+      <div class="header-search fr">
+        <input type="text">
+        <input type="submit" value="搜索">
+      </div>
     </div>
-    <div class="main-advert fr">
-      <img src="https://dummyimage.com/992x460/f1e1cc/fff.png" alt="图丢了">
+    <!--顶部菜单 结束-->
+
+    <!--左侧菜单+轮播图 开始-->
+    <div class="menu-carousel clearfix">
+      <div class="left-menu fl">
+        <ul>
+          <li><a href="">手机1</a></li>
+          <li><a href="">手机2</a></li>
+          <li><a href="">手机3</a></li>
+          <li><a href="">手机4</a></li>
+          <li><a href="">手机5</a></li>
+          <li><a href="">手机6</a></li>
+          <li><a href="">手机7</a></li>
+          <li><a href="">手机8</a></li>
+          <li><a href="">手机9</a></li>
+          <li><a href="">手机10</a></li>
+        </ul>
+      </div>
+      <div class="carousel fr">
+        <a href=""><img src="./img/carousel.png" alt=""></a>
+      </div>
     </div>
+    <!--左侧菜单+轮播图 结束-->
+
+    <!--推广 开始-->
+    <div class="push-ad clearfix">
+      <div class="left-part fl">
+        <a href=""><img src="./img/pic0.png" alt=""></a>
+      </div>
+      <div class="right-part fr">
+        <a href=""><img src="./img/pic1.png" alt=""></a>
+        <a href=""><img src="./img/pic2.png" alt=""></a>
+        <a href=""><img src="./img/pic3.png" alt=""></a>
+      </div>
+    </div>
+    <!--推广 结束-->
+
+    <!--闪购 开始-->
+    <div class="flash-sale clearfix">
+      <h1 class="flash-title">限时闪购</h1>
+      <div class="left-part fl">
+        <a href=""><img src="./img/flash0.png" alt=""></a>
+      </div>
+      <div class="right-part fr">
+        <a href=""><img src="./img/flash1.png" alt=""></a>
+        <a href=""><img src="./img/flash2.png" alt=""></a>
+        <a href=""><img src="./img/flash1.png" alt=""></a>
+        <a href=""><img src="./img/flash2.png" alt=""></a>
+      </div>
+    </div>
+    <!--闪购 结束-->
+
   </div>
 </div>
-<!-- 首屏 结束-->
+<!--首屏 结束-->
+
+<!--商品列表 开始-->
+<div class="goods-list">
+  <div class="container">
+    <div class="goods clearfix">
+      <h1 class="goods-category">家电</h1>
+      <div class="left fl">
+        <a href=""><img src="./img/goods-left0.png" alt=""></a>
+      </div>
+      <div class="goods-box-right fr">
+        <div class="goods-item fl">
+          <div class="goods-img">
+            <a><img src="./img/item1.png" alt=""></a>
+          </div>
+          <p class="goods-title">商品名称</p>
+          <p class="goods-price">￥19.99</p>
+        </div>
+        <div class="goods-item fl">
+          <div class="goods-img">
+            <a><img src="./img/item1.png" alt=""></a>
+          </div>
+          <p class="goods-title">商品名称</p>
+          <p class="goods-price">￥19.99</p>
+        </div>
+        <div class="goods-item fl">
+          <div class="goods-img">
+            <a><img src="./img/item1.png" alt=""></a>
+          </div>
+          <p class="goods-title">商品名称</p>
+          <p class="goods-price">￥19.99</p>
+        </div>
+        <div class="goods-item fl">
+          <div class="goods-img">
+            <a><img src="./img/item1.png" alt=""></a>
+          </div>
+          <p class="goods-title">商品名称</p>
+          <p class="goods-price">￥19.99</p>
+        </div>
+        <div class="goods-item fl">
+          <div class="goods-img">
+            <a><img src="./img/item1.png" alt=""></a>
+          </div>
+          <p class="goods-title">商品名称</p>
+          <p class="goods-price">￥19.99</p>
+        </div>
+        <div class="goods-item fl">
+          <div class="goods-img">
+            <a><img src="./img/item1.png" alt=""></a>
+          </div>
+          <p class="goods-title">商品名称</p>
+          <p class="goods-price">￥19.99</p>
+        </div>
+        <div class="goods-item fl">
+          <div class="goods-img">
+            <a><img src="./img/item1.png" alt=""></a>
+          </div>
+          <p class="goods-title">商品名称</p>
+          <p class="goods-price">￥19.99</p>
+        </div>
+        <div class="goods-item fl">
+          <div class="goods-img">
+            <a><img src="./img/item1.png" alt=""></a>
+          </div>
+          <p class="goods-title">商品名称</p>
+          <p class="goods-price">￥19.99</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+<!--商品列表 结束-->
+
+<!--底部 开始-->
+<!--底部 结束-->
+
+
 </body>
 </html>
