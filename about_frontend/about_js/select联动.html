@@ -15,12 +15,6 @@
   <option>请选择市:</option>
 </select>
 
-<select name="" id="s1">
-  <option value="1">1</option>
-  <option value="2">2</option>
-  <option value="3">3</option>
-</select>
-
 <script>
   data = {"河北省": ["廊坊", "邯郸"], "北京": ["朝阳区", "海淀区"], "山东": ["威海市", "烟台市"]};
 
@@ -38,14 +32,11 @@
     // 清空option
     c.options.length = 0;
 
-    for (var i in citys) {
-      if (citys.hasOwnProperty(i)) {
-        var option_city = document.createElement("option");
+    for (var i=0;i<citys.length;i++) {
+      var option_city = document.createElement("option");
       option_city.innerHTML = citys[i];
       c.appendChild(option_city);
-      }
     }
-
   }
 </script>
 </body>
