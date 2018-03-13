@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="x-ua-compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>绑定事件</title>
+  <style>
+    #d1,
+    #d2{
+      width: 50px;
+      height: 50px;
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+
+<div id="d1" onclick="changeColor(this);">点我</div>
+<div id="d2">点我</div>
+<script>
+  function changeColor(ths) {
+    ths.style.backgroundColor="green";
+  }
+
+  var divEle2 = document.getElementById("d2");
+  divEle2.onclick=function () {
+    this.innerText="呵呵";
+  }
+
+</script>
+</body>
+</html>
